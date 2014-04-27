@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="Cms.css" />
 <link rel="icon" type="image/png" href="logo.PNG" />
+<script type="text/javascript" src="jquery.jeditable.js"> </script>
 <title>Creer un article</title>
 </head>
 <body>
@@ -38,6 +39,7 @@
 		</tr>
 
 	</table>
+	
 	</aside> <article>
 	<h2>Ecrire un nouvel article</h2>
 	<form method="get" action="Controleur.jsp">
@@ -61,7 +63,6 @@
 	</form>
 
 	</article> </section>
-
 	<footer> </footer>
 </body>
 </html>
