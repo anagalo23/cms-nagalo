@@ -4,7 +4,6 @@ import java.io.IOException;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
-import javax.json.JsonObject;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -74,12 +73,14 @@ public class AutocompleteServlet extends HttpServlet {
      * @return
      */
     private List<String> getData(List<ArticleDTO> data, String query ) {
-        String title;
+        String title,contenu;
         query = query.toLowerCase();
         List<String> matched = new ArrayList<>();
         for(int i=0; i<data.size(); i++) {
+        	
             title = data.get(i).getTitre().toLowerCase();
-            if(title.startsWith(query)) {
+            contenu=data.get(i).getContenu_art().toLowerCase();
+            if(title.startsWith(query) || contenu.contains(query)) {
                 matched.add(data.get(i).getTitre());
             }
         }
