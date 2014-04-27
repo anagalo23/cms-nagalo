@@ -3,8 +3,6 @@
 <%
 	String action = request.getParameter("action");
 	int article = 0;
-	//SomeClass value = (SomeClass)session.getAttribute("someID");
-	//System.out.println(session);
 	String pageSuivante = "erreur.jsp";
 	try {
 
