@@ -1,0 +1,232 @@
+@CHARSET "ISO-8859-1";
+
+
+section {
+	background-color:Cornsilk;
+	width: 100%;
+}
+
+#menuAside {
+	margin-top: 3%;
+	margin-left: 1%;
+	float: left;
+	width: 15%;
+
+}
+#menuAside, #article{
+	display:inline-block;
+	margin-top:5%;
+	
+	
+}
+#retourAside{
+	margin-top: 3%;
+	height:3%;
+	background-color:WhiteSmoke;
+}
+
+article {
+	margin-right: 3%;
+	width: 80%;
+	margin-top:2%;
+	float: right;
+	border: 1px solid black;
+	padding: 1px 1px 1px 6px;
+	
+}
+
+a:link {
+	text-decoration:none;
+	color: Maroon;
+}
+
+
+
+
+h1 {
+	position: absolute;
+	top:0;
+	left:20%;
+	text-align: Center;
+	font-family: Comic Sans MS;
+}
+h2{
+	text-align: Center;
+}
+
+
+li {
+	list-style-type:decimal;
+	font-family: Comic Sans MS;
+	margin-left: 6%;
+	margin-bottom: 3%;
+	text-decoration: underline;
+	font-weight: bold;
+	color: blue;
+}
+
+a:hover {
+	color: blue;
+	text-decoration:none;
+}
+#home{
+	margin-left: 1%;
+}
+
+	
+
+
+p {
+	
+	padding: 10px 10px 10px 10px;
+	margin-left: 5%;
+	width: 90%;
+	background-color: white;
+
+}
+
+
+
+#maindiv{
+    margin:auto;
+    font-size: 20px;
+    font-family: Comic Sans MS;
+    margin: 0 10% 0 10%;
+}
+ 
+#divg{
+	height: 400px;
+	width: 45%;
+    float:left;
+    border: 1px solid black;
+    margin: 0 0 50px 0;
+    padding: 20px 0 0 20px;
+}
+ 
+#divd{
+	height: 400px;
+	width: 45%;
+	float: right;
+	border: 1px solid black;
+	text-align:center;
+	  padding: 20px 0 0 0;
+}
+
+
+#div3 {
+	font-family: Comic Sans MS;
+	font-weight: bold;
+}
+#divPoste{
+	margin-top:20%;
+	margin-left:5%;
+}
+#supp{
+	background-color:Olive;
+	text-align: center;
+}
+
+#p_ge_ar {
+	border: 1px solid black;
+	padding: 2% 0% 2% 1%;
+}
+
+#logo {
+	position:abslute;
+	left: 3%;
+	top: 1%;
+	width: 10%;
+	height: 70px;
+} 
+
+#saisi {
+	margin-left: 3%;
+	width: 94%;
+	height: 30px;
+}
+
+
+#text{
+	margin-left: 3%;
+	width: 94%;
+	margin-top:3%;
+	height:400px;
+}
+
+#Contenu_Visiteur {
+	background-color: DarkGray;
+	padding: 1px 1px 1px 5px;
+	width: 80%
+}#menuTab{
+	background-color:Gainsboro;
+}
+#menuPr{
+	margin-top: 30%;
+	background-color:Gainsboro;
+}
+
+#indexArticle{
+	background-color: LightSteelBlue;
+	padding: 1px 1px 1px 5px;
+	width: 94%;
+}#dec {
+	width: 100%;
+	color: blue;
+	background-color: black;
+}
+
+#dec:hover {
+	background-color: red;
+	color: black;
+}
+
+#commenter {
+	margin-left: 80%;
+}
+
+#Poster_comm {
+	margin-top: 2%;
+	margin-left: 5%;
+}
+
+#Ret {
+	margin-top: 2%;
+	margin-left: 2%;
+	width: 80px;
+}
+
+#Supp_art {
+	margin-top: 2%;
+	margin-left: 80%;
+}
+
+header {
+	margin-left:35%;
+}
+#articleHref{
+	font-size: 30px;
+	font-weight: bold;
+	text-decoration:underline;
+}
+#form {
+	border: 1px solid black;
+	width:40%;
+	margin-top:2%;
+	margin-left:30%;
+	font-family: Comic Sans MS;
+	padding: 1px 1px 1px 3px;
+}
+#tdAr{
+	width:100%;
+}
+#recherch{
+	position:absolute;
+	top:3%;
+	right:3%;
+}
+
+#admin{
+	margin-left:5%;
+	margin-top:8%;
+	background-color:orange;
+}
