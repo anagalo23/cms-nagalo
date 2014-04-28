@@ -263,10 +263,7 @@
 		else if ("recherche".equals(action)) {
 			String resultat = request.getParameter("recherch");
 			if (resultat != null) {
-				List<ArticleDTO> listRech = (List<ArticleDTO>) ArticleDAO
-						.getInstance().rechercheArticle(resultat);
 				request.setAttribute("resultat", resultat);
-				request.setAttribute("rRe", listRech);
 				pageSuivante = "Recherche.jsp";
 			} else {
 				pageSuivante = "index.jsp";

@@ -6,8 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="Cms.css" />
 <link rel="icon" type="image/png" href="logo.PNG" />
-<script type="text/javascript" src="jquery.jeditable.js"> </script>
-<title>Creer un article</title>
+
 </head>
 <body>
 	<section> <img id="logo" src="logo.PNG">
@@ -24,11 +23,11 @@
 		<tr>
 			<td><a href="Controleur.jsp?action=Affichage_article">Tous
 					les articles</a>
-			<hr /></td>
+				<hr /></td>
 		</tr>
 		<tr>
 			<td><a href="Controleur.jsp?action=GererCommentaire">Commentaire</a>
-			<hr /></td>
+				<hr /></td>
 		</tr>
 		<tr>
 			<td><a href="Controleur.jsp?action=configuration">Configuration</a>
@@ -39,16 +38,33 @@
 		</tr>
 
 	</table>
-	
-	</aside> <article>
+
+	</aside> <article> <script type="text/javascript"
+		src="http://js.nicedit.com/nicEdit-latest.js"></script> <script
+		type="text/javascript">
+			//         
+			bkLib.onDomLoaded(function() {
+				new nicEditor().panelInstance('textareaEdit');
+				new nicEditor({
+					fullPanel : true
+				})
+				
+				new nicEditor({
+					buttonList : [ 'fontSize', 'bold', 'italic', 'underline',
+							'strikeThrough', 'subscript', 'superscript',
+							'html' ]
+				})
+			});
+			//
+		</script>
 	<h2>Ecrire un nouvel article</h2>
 	<form method="get" action="Controleur.jsp">
 		<input type="hidden" name="action" value="CreerArticle"> <input
 			id="saisi" type="search" name="titre"
-			placeholder="saisir le titre de l'article" required>
+			placeholder="saisir le titre de l'article" required><br/><br/>
 
-		<textarea id="text" rows="6" cols="100" name="contenu"
-			placeholder="Contenu de l'article" required></textarea>
+		<textarea id="textareaEdit" rows="6" cols="100" name="contenu"
+			placeholder="Contenu de l'article" ></textarea>
 
 		<table align="center" width=100% border=0>
 			<tr>

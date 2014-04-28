@@ -96,6 +96,37 @@ public class ArticleDAO {
 
 	}
 	
+	public ArticleDTO rechercheArticle(String titre)
+	{
+		Connection con=null;
+		PreparedStatement ps = null;
+		ResultSet rs=null;
+		ArticleDTO retour=null;
+
+		//connexion a la base de données
+		try {
+			con=DriverManager.getConnection(URL, USER, PASS);
+			ps = con.prepareStatement("SELECT * FROM article WHERE titre=?");
+			ps.setString(1,titre);
+
+			//on execute la requete 
+			rs=ps.executeQuery();
+			if(rs.next())
+				retour=new ArticleDTO(rs.getInt("id"),rs.getString("titre"),rs.getString("contenu"),rs.getString("date"),rs.getInt("redacteur_id"));
+
+
+		} catch (Exception ee) {
+			ee.printStackTrace();
+		} finally {
+			//fermeture du rs,preparedStatement et de la connexion
+			try {if (rs != null)rs.close();} catch (Exception t) {}
+			try {if (ps != null)ps.close();} catch (Exception t) {}
+			try {if (con != null)con.close();} catch (Exception t) {}
+		}
+		return retour;
+
+	}
+	
 	
 	public List<ArticleDTO> getListeArticle()
 	{
@@ -126,34 +157,7 @@ public class ArticleDAO {
 		return retour;
 	
 	}
-	public List<ArticleDTO> rechercheArticle(String rech)
-	{
-		Connection con = null;
-		Statement st = null;
-		ResultSet rs = null;
-		List<ArticleDTO> retour=new ArrayList<ArticleDTO>();
 	
-		//connexion a la base de données
-		try {
-			con=DriverManager.getConnection(URL, USER, PASS);
-			 st = con.createStatement();
-		        /* Exécution d'une requête de lecture */
-		     rs = st.executeQuery( "SELECT * FROM article WHERE contenu LIKE '%"+rech+"%'" );
-
-			//on parcourt les lignes du resultat
-			while(rs.next())
-				retour.add(new ArticleDTO(rs.getInt("id"),rs.getString("titre"),rs.getString("contenu"),rs.getString("date"),rs.getInt("redacteur_id")));
-		} catch (Exception ee) {
-			ee.printStackTrace();
-		} finally {
-			//fermeture du rs,preparedStatement et de la connexion
-			try {if (rs != null)rs.close();} catch (Exception t) {}
-			try {if (st != null)st.close();} catch (Exception t) {}
-			try {if (con != null)con.close();} catch (Exception t) {}
-		}
-		return retour;
-	
-	}
 
 	public int updateArticle(ArticleDTO a, int id)
 	{
