@@ -33,10 +33,13 @@
 		<div id="div2">
 			<img id="logo" height="10%" width="140px" src="logo.PNG">GONA
 		</div>
-
+		<div id="admin">
+		<a href="Controleur.jsp?action=administrateur">
+			administrateur</a>
+		</div>
 		<form id="recherch" method="post" action="Controleur.jsp">
 			<input type="hidden" name="action" value="recherche"> 
-			<input width="150px" height="25px" type="search" name="recherch"
+			<input width="250px" height="25px" type="search" name="recherch"
 				placeholder="recherche...."  id="autocomplete"/> 
 			<input width="35px" height="23px"
 				type="submit" value="trouver" />
@@ -54,26 +57,24 @@
 			if(liste!=null){ 
 			for (ArticleDTO a :liste) { %>
 			<p id="p">
-				article nï¿½<%=indice++ %> <!-- affichage de l'indice de l'article -->
+				article n°<%= indice++ %> <!-- affichage de l'indice de l'article -->
 				: <a id="articleHref"
 					href="Controleur.jsp?action=articles&ida=<%=a.getId()%>"><%=StringEscapeUtils.escapeHtml(a.getTitre())%></a><br />
 				<% int reaction =CommentaireDAO.getInstance().getListeCommentaire(a.getId()).size(); 
-				if(reaction<=1){%><u><%=reaction %> rï¿½action</u>
-				<%}	else {%><u><%=reaction %> rï¿½actions</u>
+				if(reaction<=1){%><u><%=reaction %> réaction</u>
+				<%}	else {%><u><%=reaction %> réactions</u>
 				<%} %><br />
 				<%if(a.getContenu_art().length()>120){ %>
-				<%= StringEscapeUtils.escapeHtml(a.getContenu_art().substring(0, 120)) %>....<br />
+				<%= a.getContenu_art().substring(0, 120)%>....<br />
 				<%} 
 				else if(a.getContenu_art().length()<120){%>
-				<%=StringEscapeUtils.escapeHtml(a.getContenu_art())%>
+				<%=a.getContenu_art()%>
 				<%} %><br />
-				<!-- <a  id='LienIframe' href='http://startyourdev.com'  >voir l'article rapidement</a> -->
 			</p>
 			<%}}%>
 
 		</article>
-		<a id="admin" href="Controleur.jsp?action=administrateur">
-			administrateur</a>
+		
 	</section>
 
 	<footer> </footer>

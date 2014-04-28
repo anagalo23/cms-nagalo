@@ -35,7 +35,7 @@
 	<%=m.getDate().substring(11, 19) %>
 	<br />
 	Contenu de l'article:<br />
-	<p><%=StringEscapeUtils.escapeHtml(m.getContenu_art())%><br/> <br/>
+	<p><%=m.getContenu_art()%><br/> <br/>
 	<u>redacteur: </u> <br/>
 	<%= RedacteurDAO.getInstance().unRedacteur(m.getIdRedacteur()).getNom().toUpperCase()%>
 	 <%=RedacteurDAO.getInstance().unRedacteur(m.getIdRedacteur()).getPrenom() %><br/>

@@ -25,24 +25,16 @@
 			Resultat(s) de la recherche:<br />
 			<p id="p">
 			<%
-				List<ArticleDTO> rs = (List<ArticleDTO>) request
-						.getAttribute("rRe");
-				if (rs.size() == 0) {
+			String rs= (String)request.getAttribute("resultat");
+			ArticleDTO art= ArticleDAO.getInstance().rechercheArticle(rs);
+				if (rs!= null) {
 			%>
 			
-				élément non trouvé<%
-				} else {
-					for (int i = 0; i < rs.size(); i++) {
-			%>
-				Resultat:
-				<%=i + 1%>
-				: <a
-					href="Controleur.jsp?action=articles&ida=<%=rs.get(i).getId()%>"><%=StringEscapeUtils
-							.escapeHtml(rs.get(i).getTitre())%></a>
+					<a href="Controleur.jsp?action=articles&ida=<%=art.getId() %>"><%=rs %></a>
 				<br />
 				<br />
 				<%
-					}
+					
 					}
 				%>
 			</p>

@@ -76,7 +76,7 @@ a:hover {
 	
 
 
-p {
+#p {
 	
 	padding: 10px 10px 10px 10px;
 	margin-left: 5%;
@@ -140,13 +140,12 @@ p {
 } 
 
 #saisi {
-	margin-left: 3%;
 	width: 94%;
 	height: 30px;
 }
 
 
-#text{
+#textareaEdit{
 	margin-left: 3%;
 	width: 94%;
 	margin-top:3%;
@@ -222,11 +221,13 @@ header {
 #recherch{
 	position:absolute;
 	top:3%;
-	right:3%;
+	right:15%;
 }
 
 #admin{
-	margin-left:5%;
-	margin-top:8%;
+	position:absolute;
+	top:14%;
+	left:3%;
+	
 	background-color:orange;
 }
