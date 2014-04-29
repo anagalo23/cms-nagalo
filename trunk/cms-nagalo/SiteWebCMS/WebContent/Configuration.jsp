@@ -93,6 +93,7 @@
 					<td><%=r.getNom().toUpperCase()%></td>
 					<td><%=r.getPrenom()%></td>
 					<td><%=r.getMail()%></td>
+					<td><%%></td>
 				</tr>
 
 
@@ -105,7 +106,7 @@
 
 			</table>
 			<hr />
-			<h2>Supprimer un redacteur</h2>
+			<h2>Editer un redacteur</h2>
 			<table align=center>
 				<tr>
 					<td align=center><select name="idRedacteur">
@@ -122,7 +123,7 @@
 					</select></td>
 				</tr>
 				<tr>
-				<td><input type="submit" value="Modifier"
+				<td><input type="submit" value="Supprimer le redacteur"
 						style="cursor: pointer; padding: 5px 20px; background-color: lightsteelblue; border: dotted 2px grey; border-radius: 5px;"></td>
 					<td align=center><input type="submit" value="modifierRedacteur"
 						style="cursor: pointer; padding: 5px 20px; background-color: lightsteelblue; border: dotted 2px grey; border-radius: 5px;"></td>

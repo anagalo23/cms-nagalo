@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="dao.*,dto.*,java.util.*"%>
 
-
 <!DOCTYPE html">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Cms.css" />
 <title>Tableau de bord</title>
 <link rel="icon" type="image/png" href="logo.PNG" />
@@ -13,8 +12,8 @@
 <body>
  
 	<section>
-
-		<img id="logo" src="logo.PNG">GONA
+		<img id="logo" src="logo.PNG">
+		
 		<h1>Tableau de bord</h1>
 
  	
@@ -91,7 +90,6 @@
 	</div>
 
 	</article>
-	<%%>
 	 </section>
 
 	<footer> </footer>

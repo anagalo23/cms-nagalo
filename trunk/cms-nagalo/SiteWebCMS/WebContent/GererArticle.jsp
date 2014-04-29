@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="Cms.css" />
 <title>Gestion des articles</title>
 <link rel="icon" type="image/png" href="logo.PNG" />
+
 </head>
 <body >
 <section>
@@ -45,7 +46,7 @@
 				<%}	else {%><u><%=reaction %> réactions</u>
 				<%} %><br />
 				<table align=center width=30%>
-				<tr><td align=left><div id="supp"><a href="Controleur.jsp?action=modifier&idc=<%=a.getId()%>">
+				<tr><td align=left><div id="supp"><a href="Controleur.jsp?action=modifier&idm=<%=a.getId()%>">
 					modifier l'article</a></div></td>
 				<td align=right> <div id="supp"><a href="Controleur.jsp?action=supprimer&idc=<%=a.getId()%>">
 					Supprimer l'article</a> </div> </td></tr>

@@ -1,8 +1,10 @@
 @CHARSET "ISO-8859-1";
-
+body{
+	background-color:WhiteSmoke;
+}
 
 section {
-	background-color:Cornsilk;
+	background-color:Bisque;
 	width: 100%;
 }
 
@@ -22,7 +24,7 @@ section {
 #retourAside{
 	margin-top: 3%;
 	height:3%;
-	background-color:WhiteSmoke;
+	background-color:White;
 }
 
 article {
@@ -30,7 +32,7 @@ article {
 	width: 80%;
 	margin-top:2%;
 	float: right;
-	border: 1px solid black;
+	border: 1px solid OldLace;
 	padding: 1px 1px 1px 6px;
 	
 }
@@ -109,7 +111,7 @@ a:hover {
 	float: right;
 	border: 1px solid black;
 	text-align:center;
-	  padding: 20px 0 0 0;
+	padding: 20px 0 0 0;
 }
 
 
@@ -126,14 +128,9 @@ a:hover {
 	text-align: center;
 }
 
-#p_ge_ar {
-	border: 1px solid black;
-	padding: 2% 0% 2% 1%;
-}
 
 #logo {
 	position:abslute;
-	left: 3%;
 	top: 1%;
 	width: 10%;
 	height: 70px;
@@ -165,19 +162,12 @@ a:hover {
 }
 
 #indexArticle{
-	background-color: LightSteelBlue;
+	background-color: Plum;
 	padding: 1px 1px 1px 5px;
 	width: 94%;
-}#dec {
-	width: 100%;
-	color: blue;
-	background-color: black;
 }
 
-#dec:hover {
-	background-color: red;
-	color: black;
-}
+
 
 #commenter {
 	margin-left: 80%;
@@ -228,6 +218,5 @@ header {
 	position:absolute;
 	top:14%;
 	left:3%;
-	
 	background-color:orange;
 }

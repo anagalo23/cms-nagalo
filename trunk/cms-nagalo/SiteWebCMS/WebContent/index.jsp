@@ -56,7 +56,7 @@
 			int indice=1;
 			if(liste!=null){ 
 			for (ArticleDTO a :liste) { %>
-			<p id="p">
+			<div id="p">
 				article n°<%= indice++ %> <!-- affichage de l'indice de l'article -->
 				: <a id="articleHref"
 					href="Controleur.jsp?action=articles&ida=<%=a.getId()%>"><%=StringEscapeUtils.escapeHtml(a.getTitre())%></a><br />
@@ -64,13 +64,13 @@
 				if(reaction<=1){%><u><%=reaction %> réaction</u>
 				<%}	else {%><u><%=reaction %> réactions</u>
 				<%} %><br />
-				<%if(a.getContenu_art().length()>120){ %>
-				<%= a.getContenu_art().substring(0, 120)%>....<br />
+				<%if(a.getContenu_art().length()>220){ %>
+				<%= a.getContenu_art().substring(0, 220)%>....<br />
 				<%} 
-				else if(a.getContenu_art().length()<120){%>
+				else if(a.getContenu_art().length()<220){%>
 				<%=a.getContenu_art()%>
-				<%} %><br />
-			</p>
+				<%} %><br /><hr/>
+			</div>
 			<%}}%>
 
 		</article>

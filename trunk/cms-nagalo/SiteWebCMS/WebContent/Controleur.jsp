@@ -122,6 +122,7 @@
 		}
 		//Spprimer un article 
 		else if ("supprimer".equals(action)) {
+			if (session.getAttribute("id") != null) {
 			int idc = Integer.parseInt(request.getParameter("idc"));
 			ArticleDTO arti = ArticleDAO.getInstance()
 					.getUnArticle(idc);
@@ -141,7 +142,44 @@
 					pageSuivante = "GererArticle.jsp";
 				}
 			}
+			} else
+				pageSuivante = "Connexion.jsp";
 
+
+		}
+		else if("modifier".equals(action)){
+			if (session.getAttribute("id") != null) {
+			int idm = Integer.parseInt(request.getParameter("idm"));
+			ArticleDTO artiModif = ArticleDAO.getInstance()
+					.getUnArticle(idm);
+			if(artiModif!=null){
+				request.setAttribute("modifArti", artiModif);
+				pageSuivante="ModifierArticle.jsp";
+			}
+		} else
+			pageSuivante = "Connexion.jsp";
+			
+		}
+		
+		else if("modifArticle".equals(action)){
+			if (session.getAttribute("id") != null) {
+				int idModif= Integer.parseInt(request.getParameter("idmodif"));
+				if(idModif!=0){
+				String titreM = request.getParameter("titreModif");
+				String contenuM = request.getParameter("contenuModif");
+				int idRedacteurM=Integer.parseInt(request.getParameter("idRedacteurModif"));
+				ArticleDTO am = new ArticleDTO(0, titreM, contenuM,
+						"2014.2.12", idRedacteurM);
+				if(am!=null){
+					int modif=ArticleDAO.getInstance().updateArticle(am, idModif);
+					if(modif!=0){
+						pageSuivante="TableauBord.jsp";
+					}
+				}
+				}
+				
+			} else
+				pageSuivante = "Connexion.jsp";
 		}
 		//redirection sur la page du tableau de bord
 		else if ("home".equals(action)) {
@@ -239,26 +277,7 @@
 				pageSuivante = "Connexion.jsp";
 			}
 		}
-		//supprimer un redacteur
-		else if ("supRedacteur".equals(action)) {
-			if (session.getAttribute("id") != null) {
-				int idRed = Integer.parseInt(request
-						.getParameter("idRed"));
-				if (idRed != 0) {
-					int check = Integer.parseInt(request
-							.getParameter("check"));
-					if (check != 0) {
-
-						int redSup = RedacteurDAO.getInstance()
-								.deleteRedacteur(idRed);
-						pageSuivante = "Configuration.jsp";
-					}
-				}
-			} else {
-				pageSuivante = "Connexion.jsp";
-			}
-
-		} 
+	 
 		//rechercher un article
 		else if ("recherche".equals(action)) {
 			String resultat = request.getParameter("recherch");
