@@ -28,7 +28,7 @@
 			<input type="hidden" name="action" value="mRedacteur">
 			<input type="hidden" name="idRedactModif" value="<%=redDTO.getId()%>">
 			<h2>Modifier ce redacteur</h2>
-			<table id="tabConnect" align="center" cellpadding="2%" border="0">
+			<table  cellspacing="15px" align="center">
 				<tr>
 					<td>nom :</td>
 					<td><input name="nomModif" type="text" placeholder="saisir le nom" value="<%=redDTO.getNom() %>"
