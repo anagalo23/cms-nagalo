@@ -55,7 +55,7 @@
 			%>
 			
 			<tr ><td rowspan="<%=com.size()%>"><h3>
-				<%=a.getTitre()%></h3>
+				<%=a.getTitre()%> (<%=com.size()%>)</h3>
 			</td>
 			
 			
