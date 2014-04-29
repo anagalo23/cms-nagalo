@@ -65,9 +65,10 @@
 	<h2>Modifier un article</h2>
 	<form method="get" action="Controleur.jsp">
 		<input type="hidden" name="action" value="modifArticle">
-		<input type="hidden" name="idmodif" value=<%=art.getId() %>> <input
-			id="saisi" type="search" name="titreModif"
-			placeholder="<%=art.getTitre()%>" required> <br /> <br />
+		<input type="hidden" name="idmodif" value=<%=art.getId() %>>
+		 <input	id="saisi" type="search" name="titreModif" value="<%= art.getTitre()%>"
+			placeholder="Saisir le nouveau titre" required> <br /> <br /> 
+			
 
 		<textarea id="textareaEdit" rows="6" cols="100" name="contenuModif"
 			placeholder="Contenu de l'article"><%=art.getContenu_art()%></textarea>
