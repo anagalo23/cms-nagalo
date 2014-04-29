@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 
 import dto.*;
 import java.util.ArrayList;
@@ -127,6 +126,36 @@ public class ArticleDAO {
 
 	}
 	
+	public int CompteArticle(int idRedacteur)
+	{
+		Connection con=null;
+		PreparedStatement ps = null;
+		ResultSet rs=null;
+		int retour=0;
+
+		//connexion a la base de données
+		try {
+			con=DriverManager.getConnection(URL, USER, PASS);
+			ps = con.prepareStatement("SELECT COUNT(*) as t FROM article WHERE redacteur_id=?");
+			ps.setInt(1,idRedacteur);
+
+			//on execute la requete 
+			rs=ps.executeQuery();
+			
+				retour=rs.getInt("t");
+
+		} catch (Exception ee) {
+			ee.printStackTrace();
+		} finally {
+			//fermeture du rs,preparedStatement et de la connexion
+			try {if (rs != null)rs.close();} catch (Exception t) {}
+			try {if (ps != null)ps.close();} catch (Exception t) {}
+			try {if (con != null)con.close();} catch (Exception t) {}
+		}
+		return retour;
+
+	}
+	
 	
 	public List<ArticleDTO> getListeArticle()
 	{
@@ -168,7 +197,7 @@ public class ArticleDAO {
 		//connexion a la base de données
 		try {
 			con=DriverManager.getConnection(URL, USER, PASS);
-			ps = con.prepareStatement("UPDATE articlr SET  titre =?,contenu=?,redacteur_id =? WHERE id=?");
+			ps = con.prepareStatement("UPDATE article SET  titre =?,contenu=?,redacteur_id =? WHERE id=?");
 			ps.setString(1,a.getTitre());
 			ps.setString(2,a.getContenu_art());
 			ps.setInt(3, a.getIdRedacteur());

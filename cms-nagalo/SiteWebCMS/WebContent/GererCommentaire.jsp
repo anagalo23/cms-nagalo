@@ -45,39 +45,37 @@
 			<%
 				List<ArticleDTO> list = (List<ArticleDTO>) request
 						.getAttribute("list");
-				if (list != null) {
-
-					for (ArticleDTO a : list) {
+				if (list != null) {%>
+					<table border=1 align=center cellspacing="10px">
+					<tr><th>Article</th><th>Pseudo</th><th> Contenu</th><th>Date de publication</th><th>action</th></tr>
+				<%for (ArticleDTO a : list) {
 						List<CommentaireDTO> com = (List<CommentaireDTO>) CommentaireDAO
 								.getInstance().getListeCommentaire(a.getId());
 						if (com.size() != 0) {
 			%>
-
-			<h2>
+			
+			<tr ><td rowspan="<%=com.size()%>"><h2>
 				<%=a.getTitre()%></h2>
-			<br />
+			</td>
+			
+			
 			<%
 				for (int i = 0; i < com.size(); i++) {
 			%>
-			peudo:
-			<%=com.get(i).getPseudo()%><br /> date:
-			<%=com.get(i).getDate()%><br /> Commentaire:
-			<%=com.get(i).getContenu()%><br />
-			<h2 id="supp">
-				<a
-					href="Controleur.jsp?action=deleteCom&idcomment=<%=com.get(i).getId()%>">Supprimer
-					le commentaire</a>
-			</h2>
-			<hr />
+			<td><%=com.get(i).getPseudo()%></td><td><%=com.get(i).getContenu()%></td><td><%=com.get(i).getDate()%></td>
+			
+			<td ><a	href="Controleur.jsp?action=deleteCom&idcomment=<%=com.get(i).getId()%>">Supprimer
+					ce commentaire</a></td></tr>
 			<%
 				}
-			%><hr/>
+			%>
+			
 
 			<%
 				}
 					}
 			%>
-
+		</table>
 			<%
 				} else {
 			%>

@@ -67,7 +67,7 @@
 		<input type="hidden" name="action" value="modifArticle">
 		<input type="hidden" name="idmodif" value=<%=art.getId() %>> <input
 			id="saisi" type="search" name="titreModif"
-			placeholder=<%=art.getTitre()%> required><br /> <br />
+			placeholder="<%=art.getTitre()%>" required> <br /> <br />
 
 		<textarea id="textareaEdit" rows="6" cols="100" name="contenuModif"
 			placeholder="Contenu de l'article"><%=art.getContenu_art()%></textarea>

@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="Cms.css" />
 <link rel="icon" type="image/png" href="logo.PNG" />
-
+<title>Creation un article</title>
 </head>
 <body>
 	<section> <img id="logo" src="logo.PNG">
