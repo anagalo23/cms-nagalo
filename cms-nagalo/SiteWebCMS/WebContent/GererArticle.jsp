@@ -37,9 +37,9 @@
 			for (ArticleDTO a : liste) {
 				%>
 			<p id="pa">
-				<%=a.getTitre()%><br />
+				<h3 align="center"><%=a.getTitre()%></h3><br />
 				<%= a.getDate()%><br />
-				<%=StringEscapeUtils.escapeHtml(a.getContenu_art())%><br /> 
+				<div id="p"><%=StringEscapeUtils.escapeHtml(a.getContenu_art())%></div><br /> 
 				
 				<% int reaction =CommentaireDAO.getInstance().getListeCommentaire(a.getId()).size(); 
 				if(reaction<=1){%><u><%=reaction %> réaction</u>

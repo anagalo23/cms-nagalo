@@ -28,13 +28,14 @@
 			String rs= (String)request.getAttribute("resultat");
 			ArticleDTO art= ArticleDAO.getInstance().rechercheArticle(rs);
 				if (rs!= null) {
+					if(art!=null){
 			%>
 			
 					<a href="Controleur.jsp?action=articles&ida=<%=art.getId() %>"><%=rs %></a>
 				<br />
 				<br />
 				<%
-					
+					}else{%> Article non trouvé<%}
 					}
 				%>
 			</p>
