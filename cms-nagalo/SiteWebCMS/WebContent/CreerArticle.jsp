@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -16,9 +16,8 @@
 	<div id="home">
 		<a href="Controleur.jsp?action=home"><img src="home.PNG"></a>
 	</div>
-	<!-- <div id="precedent">
-		<a href="Controleur.jsp?action=precedent"><img src="precedent.PNG"></a>
-	</div> --> </aside> <aside id="menuAside">
+	</aside> 
+	<aside id="menuAside">
 	<table id="menuTab">
 		<tr>
 			<td><a href="Controleur.jsp?action=Affichage_article">Tous
@@ -39,7 +38,10 @@
 
 	</table>
 
-	</aside> <article> <script type="text/javascript"
+	</aside> 
+	<article> 
+	
+	<script type="text/javascript"
 		src="http://js.nicedit.com/nicEdit-latest.js"></script> <script
 		type="text/javascript">
 			//         
@@ -47,13 +49,15 @@
 				new nicEditor().panelInstance('textareaEdit');
 				new nicEditor({
 					fullPanel : true
+					
 				})
-				
-				new nicEditor({
-					buttonList : [ 'fontSize', 'bold', 'italic', 'underline',
-							'strikeThrough', 'subscript', 'superscript',
-							'html' ]
-				})
+
+				new nicEditor(
+						{
+							buttonList : [ 'fontSize', 'bold', 'italic',
+									'underline', 'strikeThrough', 'subscript',
+									'superscript', 'html' ]
+						})
 			});
 			//
 		</script>
@@ -61,10 +65,11 @@
 	<form method="get" action="Controleur.jsp">
 		<input type="hidden" name="action" value="CreerArticle"> <input
 			id="saisi" type="search" name="titre"
-			placeholder="saisir le titre de l'article" required><br/><br/>
+			placeholder="saisir le titre de l'article" required><br />
+		<br />
 
-		<textarea id="textareaEdit" rows="6" cols="100" name="contenu"
-			placeholder="Contenu de l'article" ></textarea>
+		</div><textarea id="textareaEdit" rows="6" cols="100" name="contenu"
+			placeholder="Contenu de l'article"></textarea>
 
 		<table align="center" width=100% border=0>
 			<tr>

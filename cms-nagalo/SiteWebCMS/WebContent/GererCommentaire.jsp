@@ -54,8 +54,8 @@
 						if (com.size() != 0) {
 			%>
 			
-			<tr ><td rowspan="<%=com.size()%>"><h2>
-				<%=a.getTitre()%></h2>
+			<tr ><td rowspan="<%=com.size()%>"><h3>
+				<%=a.getTitre()%></h3>
 			</td>
 			
 			

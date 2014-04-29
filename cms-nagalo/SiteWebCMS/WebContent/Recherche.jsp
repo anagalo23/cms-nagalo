@@ -22,7 +22,7 @@
 
 
 		<article id="indexArticle">
-			Resultat(s) de la recherche:<br />
+			Resultat de la recherche:<br />
 			<p id="p">
 			<%
 			String rs= (String)request.getAttribute("resultat");

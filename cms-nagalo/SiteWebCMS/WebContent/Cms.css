@@ -1,29 +1,24 @@
 @CHARSET "ISO-8859-1";
 body{
-	background-color:WhiteSmoke;
+	background-color:SandyBrown;
 }
 
-section {
-	background-color:Bisque;
-	width: 100%;
-}
-
-#menuAside {
-	margin-top: 3%;
-	margin-left: 1%;
+menuAside {
 	float: left;
+	margin-left: 1%;
+	
 	width: 15%;
 
 }
 #menuAside, #article{
 	display:inline-block;
-	margin-top:5%;
+	margin-top:2%;
 	
 	
 }
 #retourAside{
-	margin-top: 3%;
-	height:3%;
+	margin-top: 1%;
+	height:12%;
 	background-color:White;
 }
 
@@ -34,6 +29,7 @@ article {
 	float: right;
 	border: 1px solid OldLace;
 	padding: 1px 1px 1px 6px;
+	background-color:white;
 	
 }
 
@@ -75,9 +71,6 @@ a:hover {
 	margin-left: 1%;
 }
 
-	
-
-
 #p {
 	
 	padding: 10px 10px 10px 10px;
@@ -86,8 +79,6 @@ a:hover {
 	background-color: white;
 
 }
-
-
 
 #maindiv{
     margin:auto;
@@ -147,6 +138,7 @@ a:hover {
 	width: 94%;
 	margin-top:3%;
 	height:400px;
+	background-color:white;
 }
 
 #Contenu_Visiteur {
@@ -166,7 +158,6 @@ a:hover {
 	padding: 1px 1px 1px 5px;
 	width: 94%;
 }
-
 
 
 #commenter {
