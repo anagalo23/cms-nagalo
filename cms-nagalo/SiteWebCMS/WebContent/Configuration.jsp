@@ -177,8 +177,17 @@
 						style="border: solid 1px black; border-radius: 5px; text-align: center; box-shadow: 0 0 6px;"
 						required></td>
 				</tr>
-
 				<tr>
+					<td>Profil :</td>
+					<td><select name="AjoutProfil"  style="border: solid 1px black; border-radius: 5px; text-align: center; box-shadow: 0 0 6px;">
+
+							<option value="administrateur" >Administrateur</option>
+							<option value="redacteur"  SELECTED>Redacteur</option>
+
+					</select></td>
+
+				</tr>
+				
 				<tr>
 					<td><input type="reset" name="effacement" value="effacer"
 						style="cursor: pointer; padding: 5px 20px; background-color: lightsteelblue; border: dotted 2px grey; border-radius: 5px;" /></td>
