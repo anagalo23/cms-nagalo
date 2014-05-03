@@ -210,3 +210,10 @@ header {
 	left:3%;
 	background-color:orange;
 }
+#formConnexion{
+	width:30%;
+	margin-top:5%;
+	margin-left:30%;
+	padding: 1px 1px 1px 3px;
+	background-color:white;
+}

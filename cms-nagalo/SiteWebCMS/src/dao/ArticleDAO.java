@@ -126,24 +126,25 @@ public class ArticleDAO {
 
 	}
 	
-	public int CompteArticle(int idRedacteur)
+
+	public List<ArticleDTO> CompteArticle(int idRedacteur)
 	{
+		
 		Connection con=null;
 		PreparedStatement ps = null;
 		ResultSet rs=null;
-		int retour=0;
-
+		List<ArticleDTO> retour=new ArrayList<ArticleDTO>();
+	
 		//connexion a la base de données
 		try {
 			con=DriverManager.getConnection(URL, USER, PASS);
-			ps = con.prepareStatement("SELECT COUNT(*) as t FROM article WHERE redacteur_id=?");
-			ps.setInt(1,idRedacteur);
-
+			ps = con.prepareStatement("SELECT * FROM article WHERE redacteur_id=?");
+			ps.setInt(1, idRedacteur);						
 			//on execute la requete 
 			rs=ps.executeQuery();
-			
-				retour=rs.getInt("t");
-
+			//on parcourt les lignes du resultat
+			while(rs.next())
+				retour.add(new ArticleDTO(rs.getInt("id"),rs.getString("titre"),rs.getString("contenu"),rs.getString("date"),rs.getInt("redacteur_id")));
 		} catch (Exception ee) {
 			ee.printStackTrace();
 		} finally {
@@ -153,7 +154,7 @@ public class ArticleDAO {
 			try {if (con != null)con.close();} catch (Exception t) {}
 		}
 		return retour;
-
+	
 	}
 	
 	

@@ -15,10 +15,8 @@
 
 
 <body">
-
-
 	<section>
-		<img id="logo" src="logo.PNG">
+		<a href="Controleur.jsp?action=accueil"><img id="logo" src="logo.PNG"></a>
 		<h1><%=StringEscapeUtils.escapeHtml(m.getTitre().toUpperCase())%></h1>
 		<aside id="retourAside">
 			<div id="home">
@@ -39,8 +37,7 @@
 			<%=m.getDate().substring(0, 10)%><br />
 			<%=m.getDate().substring(11, 19)%>
 			<br /> Contenu de l'article:<br />
-			<div id="p"><%=m.getContenu_art()%><br /> <br />
-				<br />
+			<div id="p"><%=m.getContenu_art()%><br /> <br /> <br />
 				<%=RedacteurDAO.getInstance()
 						.unRedacteur(m.getIdRedacteur()).getNom().toUpperCase()%>
 				<%=RedacteurDAO.getInstance()

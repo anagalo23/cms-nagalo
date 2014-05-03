@@ -13,29 +13,32 @@
 <body>
 	<section>
 		<div id="div2">
-			<img id="logo" height="10%" width="140px" src="logo.PNG">GONA
+			<a href="Controleur.jsp?action=accueil"><img id="logo"
+				src="logo.PNG"></a>GONA
 		</div>
-
+		<aside id="retourAside">
 		<div id="home">
 			<a href="Controleur.jsp?action=accueil"><img src="home.PNG"></a>
 		</div>
-
+		</aside>
 
 		<article id="indexArticle">
 			Resultat de la recherche:<br />
 			<p id="p">
-			<%
-			String rs= (String)request.getAttribute("resultat");
-			ArticleDTO art= ArticleDAO.getInstance().rechercheArticle(rs);
-				if (rs!= null) {
-					if(art!=null){
-			%>
-			
-					<a href="Controleur.jsp?action=articles&ida=<%=art.getId() %>"><%=rs %></a>
-				<br />
-				<br />
 				<%
-					}else{%> Article non trouvé<%}
+					String rs = (String) request.getAttribute("resultat");
+					ArticleDTO art = ArticleDAO.getInstance().rechercheArticle(rs);
+					if (rs != null) {
+						if (art != null) {
+				%>
+
+				<a href="Controleur.jsp?action=articles&ida=<%=art.getId()%>"><%=rs%></a>
+				<br /> <br />
+				<%
+					} else {
+				%>
+				Article non trouvé<%
+					}
 					}
 				%>
 			</p>

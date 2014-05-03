@@ -31,7 +31,7 @@
 
 	<section>
 		<div id="div2">
-			<img id="logo" height="10%" width="140px" src="logo.PNG">GONA
+			<a href="Controleur.jsp?action=accueil"><img id="logo" src="logo.PNG"></a>GONA
 		</div>
 		<div id="admin">
 		<a href="Controleur.jsp?action=administrateur">
