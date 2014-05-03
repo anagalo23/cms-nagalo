@@ -32,7 +32,8 @@
 	%>
 
 
-	<section> <img id="logo" src="logo.PNG">
+	<section> <a href="Controleur.jsp?action=home"><img
+		id="logo" height="10%" width="140px" src="logo.PNG"></a>
 	<h1>Modifier un article</h1>
 
 	<aside id="retourAside">
@@ -55,7 +56,7 @@
 				<hr /></td>
 		</tr>
 		<tr>
-			<td><a href="Controleur.jsp?action=deconnecter">Déconnecter</a></td>
+			<td><a href="Controleur.jsp?action=deconnecter" onclick="return(confirm('Etes-vous sûr de vouloir vous déconnecter?'));">Déconnecter</a></td>
 		</tr>
 
 	</table>
@@ -64,11 +65,12 @@
 	%> </aside> <article>
 	<h2>Modifier un article</h2>
 	<form method="get" action="Controleur.jsp">
-		<input type="hidden" name="action" value="modifArticle">
-		<input type="hidden" name="idmodif" value=<%=art.getId() %>>
-		 <input	id="saisi" type="search" name="titreModif" value="<%= art.getTitre()%>"
-			placeholder="Saisir le nouveau titre" required> <br /> <br /> 
-			
+		<input type="hidden" name="action" value="modifArticle"> <input
+			type="hidden" name="idmodif" value=<%=art.getId()%>> <input
+			id="saisi" type="search" name="titreModif"
+			value="<%=art.getTitre()%>" placeholder="Saisir le nouveau titre"
+			required> <br /> <br />
+
 
 		<textarea id="textareaEdit" rows="6" cols="100" name="contenuModif"
 			placeholder="Contenu de l'article"><%=art.getContenu_art()%></textarea>
@@ -80,7 +82,8 @@
 
 		<table align="center" width=100% border=0>
 			<tr>
-				<td align="center" colspan="2"><select width=35% name="idRedacteurModif">
+				<td align="center" colspan="2"><select width=35%
+					name="idRedacteurModif">
 						<%
 							for (RedacteurDTO rd : listRedact) {
 						%>
@@ -97,7 +100,7 @@
 					value="effacer"
 					style="cursor: pointer; padding: 5px 20px; background-color: lightsteelblue; border: dotted 2px grey; border-radius: 5px;" /></td>
 				<td align="center"><input type="submit"
-					value="Enregistrer les modifications"
+					value="Enregistrer les modifications" onclick="return(confirm('Voulez-vous enregistrer les modifications?'));"
 					style="cursor: pointer; padding: 5px 20px; background-color: lightsteelblue; border: dotted 2px grey; border-radius: 5px;"></td>
 			</tr>
 		</table>

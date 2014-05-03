@@ -10,8 +10,8 @@
 </head>
 <body>
 	<section>
-
-		<img id="logo" src="logo.PNG">
+		<a href="Controleur.jsp?action=home"><img id="logo" height="10%"
+			width="140px" src="logo.PNG"></a>
 		<h1>Gestion les commentaires</h1>
 
 		<aside id="retourAside">
@@ -35,7 +35,8 @@
 						<hr /></td>
 				</tr>
 				<tr>
-					<td><a href="Controleur.jsp?action=deconnecter">Déconnecter</a></td>
+					<td><a href="Controleur.jsp?action=deconnecter"
+						onclick="return(confirm('Etes-vous sûr de vouloir vous déconnecter?'));">Déconnecter</a></td>
 				</tr>
 
 			</table>
@@ -45,37 +46,52 @@
 			<%
 				List<ArticleDTO> list = (List<ArticleDTO>) request
 						.getAttribute("list");
-				if (list != null) {%>
-					<table border=1 align=center cellspacing="10px">
-					<tr><th>Article</th><th>Pseudo</th><th> Contenu</th><th>Date de publication</th><th>action</th></tr>
-				<%for (ArticleDTO a : list) {
-						List<CommentaireDTO> com = (List<CommentaireDTO>) CommentaireDAO
-								.getInstance().getListeCommentaire(a.getId());
-						if (com.size() != 0) {
+				if (list != null) {
 			%>
-			
-			<tr ><td rowspan="<%=com.size()%>"><h3>
-				<%=a.getTitre()%> (<%=com.size()%>)</h3>
-			</td>
-			
-			
-			<%
-				for (int i = 0; i < com.size(); i++) {
-			%>
-			<td><%=com.get(i).getPseudo()%></td><td><%=com.get(i).getContenu()%></td><td><%=com.get(i).getDate()%></td>
-			
-			<td ><a	href="Controleur.jsp?action=deleteCom&idcomment=<%=com.get(i).getId()%>">Supprimer
-					ce commentaire</a></td></tr>
-			<%
-				}
-			%>
-			
+			<table border=1 align=center cellspacing="10px">
+				<tr>
+					<th>Article</th>
+					<th>Pseudo</th>
+					<th>Contenu</th>
+					<th>Date de publication</th>
+					<th>action</th>
+				</tr>
+				<%
+					for (ArticleDTO a : list) {
+							List<CommentaireDTO> com = (List<CommentaireDTO>) CommentaireDAO
+									.getInstance().getListeCommentaire(a.getId());
+							if (com.size() != 0) {
+				%>
 
-			<%
-				}
+				<tr>
+					<td rowspan="<%=com.size()%>"><h3>
+							<%=a.getTitre()%>
+							(<%=com.size()%>)
+						</h3></td>
+
+
+					<%
+						for (int i = 0; i < com.size(); i++) {
+					%>
+					<td><%=com.get(i).getPseudo()%></td>
+					<td><%=com.get(i).getContenu()%></td>
+					<td><%=com.get(i).getDate()%></td>
+
+					<td><a
+						href="Controleur.jsp?action=deleteCom&idcomment=<%=com.get(i).getId()%>"
+						onclick="return(confirm('Etes-vous sûr de vouloir supprimer ce commentaire?'));">Supprimer
+							ce commentaire</a></td>
+				</tr>
+				<%
 					}
-			%>
-		</table>
+				%>
+
+
+				<%
+					}
+						}
+				%>
+			</table>
 			<%
 				} else {
 			%>

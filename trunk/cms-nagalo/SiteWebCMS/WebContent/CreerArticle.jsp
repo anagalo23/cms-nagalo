@@ -9,7 +9,7 @@
 <title>Creation un article</title>
 </head>
 <body>
-	<section> <img id="logo" src="logo.PNG">
+	<section> <a href="Controleur.jsp?action=home"><img id="logo" height="10%" width="140px" src="logo.PNG"></a>
 	<h1>Creer un article</h1>
 
 	<aside id="retourAside">
@@ -33,7 +33,7 @@
 				<hr /></td>
 		</tr>
 		<tr>
-			<td><a href="Controleur.jsp?action=deconnecter">Déconnecter</a></td>
+			<td><a href="Controleur.jsp?action=deconnecter"  onclick="return(confirm('Etes-vous sûr de vouloir vous déconnecter?'));">Déconnecter</a></td>
 		</tr>
 
 	</table>
@@ -77,7 +77,7 @@
 					value="effacer"
 					style="cursor: pointer; padding: 5px 20px; background-color: lightsteelblue; border: dotted 2px grey; border-radius: 5px;" /></td>
 				<td align="center"><input type="submit"
-					value="Publier cet article"
+					value="Publier cet article"  onclick="return(confirm('Etes-vous sûr de vouloir publier cet article?'));"
 					style="cursor: pointer; padding: 5px 20px; background-color: lightsteelblue; border: dotted 2px grey; border-radius: 5px;"></td>
 			</tr>
 		</table>

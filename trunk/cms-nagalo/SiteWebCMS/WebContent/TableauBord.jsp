@@ -10,11 +10,13 @@
 <link rel="icon" type="image/png" href="logo.PNG" />
 </head>
 <body>
-	<section> <img id="logo" src="logo.PNG">
-	<h1>Tableau de bord</h1>
-	<aside id="retourAside"></aside>
-	
-	<aside id="menuAside">
+	<section>
+		<a href="Controleur.jsp?action=home"><img id="logo" height="10%"
+			width="140px" src="logo.PNG"></a>
+		<h1>Tableau de bord</h1>
+		<aside id="retourAside"></aside>
+
+		<aside id="menuAside">
 			<table id="menuPr">
 				<tr>
 					<td><a href="Controleur.jsp?action=Affichage_article">Tous
@@ -30,7 +32,7 @@
 						<hr /></td>
 				</tr>
 				<tr>
-					<td><a href="Controleur.jsp?action=deconnecter">Déconnecter</a></td>
+					<td><a href="Controleur.jsp?action=deconnecter"  onclick="return(confirm('Etes-vous sûr de vouloir vous déconnecter?'));">Déconnecter</a></td>
 				</tr>
 			</table>
 		</aside>

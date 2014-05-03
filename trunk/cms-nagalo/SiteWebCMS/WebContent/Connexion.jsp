@@ -10,12 +10,13 @@
 </head>
 <body>
 
-	<header id="logo_rapid"> <img src="logo.PNG"> </header>
+	<header id="logo_rapid"> <a
+		href="Controleur.jsp?action=accueil"><img src="logo.PNG"></a> </header>
 
 
-	<form id="form" method="get" action="Controleur.jsp">
+	<form id="formConnexion"  method="get" action="Controleur.jsp">
 		<input type="hidden" name="action" value="connect">
-		<table id="tabConnect" cellpadding="5%" border="0">
+		<table id="tabConnect" align=center cellpadding="5%" border="0">
 
 			<tr>
 				<td><label for="identifiant">Mail :</label></td>
@@ -35,8 +36,8 @@
 					style="cursor: pointer; padding: 5px 20px; background-color: Coral; border: dotted 2px grey; border-radius: 5px;"></td>
 			</tr>
 		</table>
-
 	</form>
+	
 </body>
 </html>
 
