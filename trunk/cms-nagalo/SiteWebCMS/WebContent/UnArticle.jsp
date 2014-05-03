@@ -63,7 +63,7 @@
 				pseudo: <i><%=StringEscapeUtils.escapeHtml(c.getPseudo())%></i><br />
 				Date du commentaire:<br /><%=c.getDate().substring(0, 10)%><br />
 				<%=c.getDate().substring(11, 19)%><br />Contenu du commentaire:<b>
-					<%=StringEscapeUtils.escapeHtml(c.getContenu())%></b> <br />
+					<%=StringEscapeUtils.escapeHtml(c.getContenu())%></b> <br /><hr/>
 
 			</div>
 

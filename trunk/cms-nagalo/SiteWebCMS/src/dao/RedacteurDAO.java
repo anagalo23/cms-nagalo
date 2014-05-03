@@ -44,11 +44,12 @@ public  class RedacteurDAO {
 		//connexion a la base de données
 		try {
 			con=DriverManager.getConnection(URL, USER, PASS);
-			ps = con.prepareStatement("INSERT INTO redacteur (nom, prenom, mail,motPasse) VALUES (?,?,?,?)");
+			ps = con.prepareStatement("INSERT INTO redacteur (nom, prenom, mail,motPasse,profil) VALUES (?,?,?,?,?)");
 			ps.setString(1,r.getNom());
 			ps.setString(2,r.getPrenom());
 			ps.setString(3,r.getMail());
 			ps.setString(4,Crypte.encrypt(r.getMotPasse()));
+			ps.setString(5, r.getProfil());
 
 			//on execute la requete 
 			retour=ps.executeUpdate();
@@ -83,7 +84,7 @@ public  class RedacteurDAO {
 			//on execute la requete 
 			rs=ps.executeQuery();
 			if(rs.next())
-				retour=new RedacteurDTO(rs.getInt("id"),rs.getString("nom"),rs.getString("prenom"),rs.getString("mail"),Crypte.decrypt(rs.getString("motPasse")),rs.getString("date"));
+				retour=new RedacteurDTO(rs.getInt("id"),rs.getString("nom"),rs.getString("prenom"),rs.getString("mail"),Crypte.decrypt(rs.getString("motPasse")),rs.getString("date"),rs.getString("profil"));
 
 
 		} catch (Exception ee) {
@@ -109,12 +110,12 @@ public  class RedacteurDAO {
 			con=DriverManager.getConnection(URL, USER, PASS);
 			ps = con.prepareStatement("SELECT * FROM redacteur WHERE id=?");
 			ps.setInt(1,id);
-			
+
 
 			//on execute la requete 
 			rs=ps.executeQuery();
 			if(rs.next())
-				retour=new RedacteurDTO(rs.getInt("id"),rs.getString("nom"),rs.getString("prenom"),rs.getString("mail"),Crypte.decrypt(rs.getString("motPasse")),rs.getString("date"));
+				retour=new RedacteurDTO(rs.getInt("id"),rs.getString("nom"),rs.getString("prenom"),rs.getString("mail"),Crypte.decrypt(rs.getString("motPasse")),rs.getString("date"),rs.getString("profil"));
 
 
 		} catch (Exception ee) {
@@ -144,7 +145,7 @@ public  class RedacteurDAO {
 			rs=ps.executeQuery();
 			//on parcourt les lignes du resultat
 			while(rs.next())
-				retour.add(new RedacteurDTO(rs.getInt("id"),rs.getString("nom"),rs.getString("prenom"),rs.getString("mail"),Crypte.decrypt(rs.getString("motPasse")),rs.getString("date")));
+				retour.add(new RedacteurDTO(rs.getInt("id"),rs.getString("nom"),rs.getString("prenom"),rs.getString("mail"),Crypte.decrypt(rs.getString("motPasse")),rs.getString("date"),rs.getString("profil")));
 
 		} catch (Exception ee) {
 			ee.printStackTrace();
@@ -157,8 +158,8 @@ public  class RedacteurDAO {
 		return retour;
 
 	}
-	
-	
+
+
 
 	public int updateReadacteur(RedacteurDTO r, int id)
 	{
@@ -171,13 +172,14 @@ public  class RedacteurDAO {
 		//connexion a la base de données
 		try {
 			con=DriverManager.getConnection(URL, USER, PASS);
-			ps = con.prepareStatement("UPDATE redacteur SET  nom =?,prenom=?,mail=?,motPasse=?" +
+			ps = con.prepareStatement("UPDATE redacteur SET  nom =?,prenom=?,mail=?,motPasse=?,profil=?" +
 					" WHERE id=?");
 			ps.setString(1,r.getNom());
 			ps.setString(2,r.getPrenom());
 			ps.setString(3, r.getMail());
 			ps.setString(4, Crypte.encrypt(r.getMotPasse()));
-			ps.setInt(5,id);
+			ps.setString(5, r.getProfil());
+			ps.setInt(6,id);
 			retour=ps.executeUpdate();
 		} catch (Exception ee) {
 			ee.printStackTrace();
@@ -189,7 +191,7 @@ public  class RedacteurDAO {
 		}
 		return retour;
 	}
-	
+
 
 	public int deleteRedacteur(int id)
 	{

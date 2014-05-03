@@ -252,8 +252,9 @@
 				String prenom = request.getParameter("prenom");
 				String mail = request.getParameter("mail");
 				String mp = request.getParameter("password");
+				String pf=request.getParameter("addProfil");
 				RedacteurDTO rd = new RedacteurDTO(0, nom, prenom,
-						mail, mp, "12.12.12");
+						mail, mp, "12.12.12",pf);
 
 				int ajoutR = RedacteurDAO.getInstance()
 						.ajouterRedacteur(rd);
@@ -266,7 +267,7 @@
 				pageSuivante = "Connexion.jsp";
 
 		}
-		//paramétrage du site
+	/* 	//paramétrage du site
 		else if ("paraPage".equals(action)) {
 			if (session.getAttribute("id") != null) {
 				String couleur = request.getParameter("couleurs");
@@ -278,7 +279,7 @@
 			} else {
 				pageSuivante = "Connexion.jsp";
 			}
-		}
+		} */
 
 		//rechercher un article
 		else if ("recherche".equals(action)) {
@@ -357,8 +358,9 @@
 					String prenomM = request.getParameter("prenomModif");
 					String mailM = request.getParameter("mailModif");
 					String passwordM = request.getParameter("passwordModif");
+					String profil=request.getParameter("ModifProfil");
 					
-					RedacteurDTO redacteur= new RedacteurDTO(0, nomM,prenomM,mailM,passwordM, "12/12/12");
+					RedacteurDTO redacteur= new RedacteurDTO(0, nomM,prenomM,mailM,passwordM, "12/12/12",profil);
 					if(redacteur!=null){
 						int update = RedacteurDAO.getInstance().updateReadacteur(redacteur, idRedactModif);
 						if(update!=0){

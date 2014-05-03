@@ -8,11 +8,12 @@ public class RedacteurDTO {
 	String mail;
 	String motPasse;
 	String date;
+	String profil;
 
 	public RedacteurDTO (){
 
 	}
-	public RedacteurDTO(int id,String nom, String prenom, String mail, String motPasse, String date) {
+	public RedacteurDTO(int id,String nom, String prenom, String mail, String motPasse, String date, String profil) {
 		super();
 		this.id=id;
 		this.mail = mail;
@@ -20,6 +21,7 @@ public class RedacteurDTO {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.date= date;
+		this.profil=profil;
 	}
 	public int getId() {
 		return id;
@@ -57,15 +59,20 @@ public class RedacteurDTO {
 	public void setDate(String date) {
 		this.date = date;
 	}
+	
+	public String getProfil() {
+		return profil;
+	}
+	public void setProfil(String profil) {
+		this.profil = profil;
+	}
 	@Override
 	public String toString() {
 		return "RedacteurDTO [id=" + id + ", nom=" + nom + ", prenom=" + prenom
 				+ ", mail=" + mail + ", motPasse=" + motPasse + ", date="
-				+ date + "]";
+				+ date + ", profil=" + profil + "]";
 	}
-	
+		
 
 	
-
-
 }
