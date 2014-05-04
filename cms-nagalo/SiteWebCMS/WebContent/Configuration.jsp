@@ -62,13 +62,22 @@
 						style="border: solid 1px black; border-radius: 5px; text-align: center; box-shadow: 0 0 6px;"
 						required></td>
 				</tr>
+				<tr>
+					<td>Profil :</td>
+					<td><select name="addProfil"
+						style="border: solid 1px black; border-radius: 5px; text-align: center; box-shadow: 0 0 6px;">
+
+							<option value="admin">Administrateur</option>
+							<option value="redacteur" SELECTED>Redacteur</option>
+
+					</select></td>
+
+				</tr>
 
 				<tr>
 				<tr>
-					<td><input type="reset" name="effacement" value="effacer"
-						style="cursor: pointer; padding: 5px 20px; background-color: lightsteelblue; border: dotted 2px grey; border-radius: 5px;" /></td>
-					<td align="center"><input type="submit" value="enregistrer"
-						style="cursor: pointer; padding: 5px 20px; background-color: lightsteelblue; border: dotted 2px grey; border-radius: 5px;"></td>
+					<td><input type="reset" name="effacement" value="effacer" id="boutonAdmin" /></td>
+					<td align="center"><input id="boutonAdmin" type="submit" value="enregistrer"></td>
 				</tr>
 			</table>
 
@@ -88,10 +97,11 @@
 
 			<table cellpadding="2%" align="center" border="1">
 				<tr>
-					<th>identifiant</th>
-					<th>nom</th>
-					<th>prénom</th>
-					<th>mail</th>
+					<th>Identifiant</th>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Mail</th>
+					<th>Profil</th>
 					<th>Nbre d'articles publiés</th>
 				</tr>
 				<%
@@ -106,6 +116,7 @@
 					<td><a
 						href="Controleur.jsp?action=modifierRedacteur&idMRedacteur=<%=r.getId()%>"
 						onclick="return(confirm('Etes-vous sûr de vouloir modifier ce redacteur?'));"><%=r.getMail()%></a></td>
+					<td> <%=r.getProfil() %></td>
 					<td align="center"><%=ArticleDAO.getInstance().CompteArticle(r.getId())
 							.size()%></td>
 				</tr>
@@ -137,9 +148,8 @@
 					</select></td>
 				</tr>
 				<tr>
-					<td><input type="submit" value="Supprimer le redacteur"
-						onclick="return(confirm('Etes-vous sûr de vouloir supprimer ce redacteur?'));"
-						style="cursor: pointer; padding: 5px 20px; background-color: lightsteelblue; border: dotted 2px grey; border-radius: 5px;"></td>
+					<td><input type="submit" value="Supprimer le redacteur" id="boutonAdmin"
+						onclick="return(confirm('Etes-vous sûr de vouloir supprimer ce redacteur?'));"></td>
 				</tr>
 			</table>
 		</form>
@@ -179,21 +189,20 @@
 				</tr>
 				<tr>
 					<td>Profil :</td>
-					<td><select name="AjoutProfil"  style="border: solid 1px black; border-radius: 5px; text-align: center; box-shadow: 0 0 6px;">
+					<td><select name="addProfil"
+						style="border: solid 1px black; border-radius: 5px; text-align: center; box-shadow: 0 0 6px;">
 
-							<option value="administrateur" >Administrateur</option>
-							<option value="redacteur"  SELECTED>Redacteur</option>
+							<option value="admin">Administrateur</option>
+							<option value="redacteur" SELECTED>Redacteur</option>
 
 					</select></td>
 
 				</tr>
-				
+
 				<tr>
-					<td><input type="reset" name="effacement" value="effacer"
-						style="cursor: pointer; padding: 5px 20px; background-color: lightsteelblue; border: dotted 2px grey; border-radius: 5px;" /></td>
+					<td><input type="reset" name="effacement" value="effacer" id="boutonAdmin"/></td>
 					<td align="center"><input type="submit" value="enregistrer"
-						onclick="return(confirm('Etes-vous sûr de vouloir enregistrer?'));"
-						style="cursor: pointer; padding: 5px 20px; background-color: lightsteelblue; border: dotted 2px grey; border-radius: 5px;"></td>
+						onclick="return(confirm('Etes-vous sûr de vouloir enregistrer?'));" id="boutonAdmin"></td>
 				</tr>
 			</table>
 

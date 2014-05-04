@@ -74,7 +74,7 @@
 			%>
 			<hr />
 
-			<form id="form" method="get" action="Controleur.jsp">
+			<form id="form" method="post" action="Controleur.jsp">
 				<input type="hidden" name="action" value="posterCom"> <input
 					type="hidden" name="idAr" value="<%=m.getId()%>"">
 				<table id="tabConnect" cellpadding="5%">
@@ -85,13 +85,13 @@
 					</tr>
 					<tr>
 						<td>commentaire</td>
-						<td><textarea name="comm" rows="6" cols="35"
+						<td><textarea name="comm" rows="8" cols="58"
 								placeholder="ecrire le commentaire ici" required></textarea></td>
 					</tr>
 					<tr>
-						<td><input type="reset" name="effacement" value="effacer"
+						<td align="center"><input type="reset" name="effacement" value="effacer"
 							style="cursor: pointer; padding: 5px 20px; background-color: Coral; border: dotted 2px grey; border-radius: 5px;" /></td>
-						<td colspan="2" align="center"><input type="submit"
+						<td align="right"><input type="submit"
 							value="poster le commentaire"
 							style="cursor: pointer; padding: 5px 20px; background-color: Coral; border: dotted 2px grey; border-radius: 5px;"></td>
 					</tr>

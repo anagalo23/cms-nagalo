@@ -1,5 +1,4 @@
-<%@ page
-	import="dao.*,dto.*,java.util.*,javax.servlet.http.HttpSession;"%>
+<%@ page import="dao.*,dto.*,java.util.*;"%>
 <%
 	String action = request.getParameter("action");
 	int article = 0;
@@ -10,25 +9,15 @@
 		if ("connect".equals(action)) {
 			String login = request.getParameter("mail");
 			String password = request.getParameter("password");
-			int id = RedacteurDAO.getInstance()
-					.getRedacteur(login, password).getId();
-			String nom = RedacteurDAO.getInstance()
-					.getRedacteur(login, password).getNom();
-			String prenom = RedacteurDAO.getInstance()
-					.getRedacteur(login, password).getPrenom();
 
-			if (id != 0) {
-				session.setAttribute("id", id);
-				session.setAttribute("nom", nom);
-				session.setAttribute("prenom", prenom);
-				session.setAttribute("mail", login);
-				if (session.getAttribute("id") != null) {
+			RedacteurDTO redacteur = RedacteurDAO.getInstance()
+					.getRedacteur(login, password);
+			if (redacteur!=null) {
+				session.setAttribute("redacteur", redacteur);
 					pageSuivante = "TableauBord.jsp";
-				} else
+				} else {
 					pageSuivante = "Connexion.jsp";
-
-			}
-
+				}
 		}
 
 		//affichage de la liste des articles
@@ -39,7 +28,7 @@
 
 		//ajout d'un article
 		else if ("AjoutArticle".equals(action)) {
-			if (session.getAttribute("id") != null) {
+			if (session.getAttribute("redacteur") != null) {
 				pageSuivante = "CreerArticle.jsp";
 			} else
 				pageSuivante = "Connexion.jsp";
@@ -48,10 +37,10 @@
 
 		//gerer les articles
 		else if ("GererArticle".equals(action)) {
-			List<ArticleDTO> list = ArticleDAO.getInstance()
-					.getListeArticle();
-			request.setAttribute("list", list);
-			if (session.getAttribute("id") != null) {
+			if (session.getAttribute("redacteur") != null) {
+				List<ArticleDTO> list = ArticleDAO.getInstance()
+						.getListeArticle();
+				request.setAttribute("list", list);
 				pageSuivante = "GererArticle.jsp";
 			} else
 				pageSuivante = "Connexion.jsp";
@@ -61,10 +50,10 @@
 		// gerer les commentaires
 		else if ("GererCommentaire".equals(action)) {
 
-			List<ArticleDTO> list = ArticleDAO.getInstance()
-					.getListeArticle();
-			request.setAttribute("list", list);
-			if (session.getAttribute("id") != null) {
+			if (session.getAttribute("redacteur") != null) {
+				List<ArticleDTO> list = ArticleDAO.getInstance()
+						.getListeArticle();
+				request.setAttribute("list", list);
 				pageSuivante = "GererCommentaire.jsp";
 			} else
 				pageSuivante = "Connexion.jsp";
@@ -73,26 +62,26 @@
 
 		//creer un article
 		else if ("CreerArticle".equals(action)) {
-			String titre = request.getParameter("titre");
-			String contenu = request.getParameter("contenu");
-			int idRedacteur = (Integer) session.getAttribute("id");
-			ArticleDTO a = new ArticleDTO(0, titre, contenu,
-					"2014.2.12", idRedacteur);
-			int ajout = ArticleDAO.getInstance().ajouterArticle(a);
-			if (ajout != 0) {
+			if (session.getAttribute("redacteur") != null) {
+				String titre = request.getParameter("titre");
+				String contenu = request.getParameter("contenu");
+				int idRedacteur = (Integer) session.getAttribute("id");
+				ArticleDTO a = new ArticleDTO(0, titre, contenu,
+						"2014.2.12", idRedacteur);
+				int ajout = ArticleDAO.getInstance().ajouterArticle(a);
+				if (ajout != 0) {
 
-				pageSuivante = "TableauBord.jsp";
-			}
+					pageSuivante = "TableauBord.jsp";
+				}
+			} else
+				pageSuivante = "Connexion.jsp";
 
 		}
 
 		// deconnexion
 		else if ("deconnecter".equals(action)) {
-			if (session != null) {
-				session.removeAttribute("id");
-				session.removeAttribute("nom");
-				session.removeAttribute("prenom");
-				session.removeAttribute("mail");
+			if (session.getAttribute("redacteur") != null) {
+				session.removeAttribute("redacteur");
 				pageSuivante = "Connexion.jsp";
 			}
 		}
@@ -108,21 +97,11 @@
 			} else {
 				pageSuivante = "index.jsp";
 			}
-
 		}
 
-		// gestion des pages
-		else if ("page".equals(action)) {
-			int ida = Integer.parseInt(request.getParameter("id"));
-			if (ida != 0) {
-				pageSuivante = "page.jsp";
-			} else
-				pageSuivante = "Accueil.jsp";
-
-		}
 		//Spprimer un article 
 		else if ("supprimer".equals(action)) {
-			if (session.getAttribute("id") != null) {
+			if (session.getAttribute("redacteur") != null) {
 				int idc = Integer.parseInt(request.getParameter("idc"));
 				ArticleDTO arti = ArticleDAO.getInstance()
 						.getUnArticle(idc);
@@ -145,8 +124,9 @@
 			} else
 				pageSuivante = "Connexion.jsp";
 
+			//chargement de la page de modification des articles
 		} else if ("modifier".equals(action)) {
-			if (session.getAttribute("id") != null) {
+			if (session.getAttribute("redacteur") != null) {
 				int idm = Integer.parseInt(request.getParameter("idm"));
 				ArticleDTO artiModif = ArticleDAO.getInstance()
 						.getUnArticle(idm);
@@ -158,9 +138,9 @@
 				pageSuivante = "Connexion.jsp";
 
 		}
-
+		//recuperation des parametres pour la modification d'un article
 		else if ("modifArticle".equals(action)) {
-			if (session.getAttribute("id") != null) {
+			if (session.getAttribute("redacteur") != null) {
 				int idModif = Integer.parseInt(request
 						.getParameter("idmodif"));
 				if (idModif != 0) {
@@ -185,7 +165,7 @@
 		}
 		//redirection sur la page du tableau de bord
 		else if ("home".equals(action)) {
-			if (session.getAttribute("id") != null) {
+			if (session.getAttribute("redacteur") != null) {
 				pageSuivante = "TableauBord.jsp";
 			} else
 				pageSuivante = "Connexion.jsp";
@@ -238,8 +218,12 @@
 
 		// redirection vers la page de configuration du site
 		else if ("configuration".equals(action)) {
-			if (session.getAttribute("id") != null) {
-				pageSuivante = "Configuration.jsp";
+			RedacteurDTO red = (RedacteurDTO) session
+					.getAttribute("redacteur");
+			if (red != null) {
+				if (red.getProfil().startsWith("a")) {
+					pageSuivante = "Configuration.jsp";
+				} else {pageSuivante="TableauBord.jsp";}
 
 			} else
 				pageSuivante = "Connexion.jsp";
@@ -247,14 +231,14 @@
 		}
 		//ajout d'un redacteur. page de configuration
 		else if ("ajoutRedacteur".equals(action)) {
-			if (session.getAttribute("id") != null) {
+			if (session.getAttribute("redacteur") != null) {
 				String nom = request.getParameter("nom");
 				String prenom = request.getParameter("prenom");
 				String mail = request.getParameter("mail");
 				String mp = request.getParameter("password");
-				String pf=request.getParameter("addProfil");
+				String pf = request.getParameter("addProfil");
 				RedacteurDTO rd = new RedacteurDTO(0, nom, prenom,
-						mail, mp, "12.12.12",pf);
+						mail, mp, "12.12.12", pf);
 
 				int ajoutR = RedacteurDAO.getInstance()
 						.ajouterRedacteur(rd);
@@ -267,19 +251,6 @@
 				pageSuivante = "Connexion.jsp";
 
 		}
-	/* 	//paramétrage du site
-		else if ("paraPage".equals(action)) {
-			if (session.getAttribute("id") != null) {
-				String couleur = request.getParameter("couleurs");
-				if (couleur != null) {
-					request.setAttribute("couleur", couleur);
-					pageSuivante = "Configuration.jsp";
-				} else
-					pageSuivante = "erreur.jsp";
-			} else {
-				pageSuivante = "Connexion.jsp";
-			}
-		} */
 
 		//rechercher un article
 		else if ("recherche".equals(action)) {
@@ -293,7 +264,7 @@
 		}
 		// supprimer un commentaire
 		else if ("deleteCom".equals(action)) {
-			if (session.getAttribute("id") != null) {
+			if (session.getAttribute("redacteur") != null) {
 				int idCom = Integer.parseInt(request
 						.getParameter("idcomment"));
 				List<ArticleDTO> list = ArticleDAO.getInstance()
@@ -316,7 +287,7 @@
 		}
 		//Supprimer un redacteur
 		else if ("supSelect".equals(action)) {
-			if (session.getAttribute("id") != null) {
+			if (session.getAttribute("redacteur") != null) {
 				int idRedact = Integer.parseInt(request
 						.getParameter("idRedacteur"));
 				if (idRedact != 0) {
@@ -336,7 +307,7 @@
 		}
 
 		else if ("modifierRedacteur".equals(action)) {
-			if (session.getAttribute("id") != null) {
+			if (session.getAttribute("redacteur") != null) {
 				int idred = Integer.parseInt(request
 						.getParameter("idMRedacteur"));
 				RedacteurDTO redDTO = RedacteurDAO.getInstance()
@@ -350,25 +321,34 @@
 			} else {
 				pageSuivante = "Connexion.jsp";
 			}
-		} else if ("mRedacteur".equals(action)) {
-			if (session.getAttribute("id") != null) {
-				int idRedactModif=Integer.parseInt(request.getParameter("idRedactModif"));
-				if(idRedactModif!=0){
+		}
+		// modification d'un redacteur
+		else if ("mRedacteur".equals(action)) {
+			if (session.getAttribute("redacteur") != null) {
+				int idRedactModif = Integer.parseInt(request
+						.getParameter("idRedactModif"));
+				if (idRedactModif != 0) {
 					String nomM = request.getParameter("nomModif");
-					String prenomM = request.getParameter("prenomModif");
+					String prenomM = request
+							.getParameter("prenomModif");
 					String mailM = request.getParameter("mailModif");
-					String passwordM = request.getParameter("passwordModif");
-					String profil=request.getParameter("ModifProfil");
-					
-					RedacteurDTO redacteur= new RedacteurDTO(0, nomM,prenomM,mailM,passwordM, "12/12/12",profil);
-					if(redacteur!=null){
-						int update = RedacteurDAO.getInstance().updateReadacteur(redacteur, idRedactModif);
-						if(update!=0){
-							pageSuivante="Configuration.jsp";
+					String passwordM = request
+							.getParameter("passwordModif");
+					String profil = request.getParameter("ModifProfil");
+
+					RedacteurDTO redacteur = new RedacteurDTO(0, nomM,
+							prenomM, mailM, passwordM, "12/12/12",
+							profil);
+					if (redacteur != null) {
+						int update = RedacteurDAO.getInstance()
+								.updateReadacteur(redacteur,
+										idRedactModif);
+						if (update != 0) {
+							pageSuivante = "Configuration.jsp";
 						}
 					}
 				}
-				
+
 			} else {
 				pageSuivante = "Connexion.jsp";
 			}
