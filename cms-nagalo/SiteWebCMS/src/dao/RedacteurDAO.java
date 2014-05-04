@@ -11,7 +11,7 @@ import java.util.List;
 
 public  class RedacteurDAO {
 
-	private static String URL ="jdbc:mysql://localhost/mydb";
+	private static String URL ="jdbc:mysql://localhost/cms";
 	private static String USER ="root";
 	private static String PASS ="";
 	private static RedacteurDAO singleton;
@@ -44,11 +44,11 @@ public  class RedacteurDAO {
 		//connexion a la base de données
 		try {
 			con=DriverManager.getConnection(URL, USER, PASS);
-			ps = con.prepareStatement("INSERT INTO redacteur (nom, prenom, mail,motPasse,profil) VALUES (?,?,?,?,?)");
+			ps = con.prepareStatement("INSERT INTO redacteur (nom, prenom,mail,motPasse,profil) VALUES (?,?,?,?,?)");
 			ps.setString(1,r.getNom());
 			ps.setString(2,r.getPrenom());
 			ps.setString(3,r.getMail());
-			ps.setString(4,Crypte.encrypt(r.getMotPasse()));
+			ps.setString(4,r.getMotPasse());
 			ps.setString(5, r.getProfil());
 
 			//on execute la requete 
@@ -79,12 +79,12 @@ public  class RedacteurDAO {
 			con=DriverManager.getConnection(URL, USER, PASS);
 			ps = con.prepareStatement("SELECT * FROM redacteur WHERE mail=? AND motPasse=?");
 			ps.setString(1,mail);
-			ps.setString(2, Crypte.encrypt(password));
+			ps.setString(2, password);
 
 			//on execute la requete 
 			rs=ps.executeQuery();
 			if(rs.next())
-				retour=new RedacteurDTO(rs.getInt("id"),rs.getString("nom"),rs.getString("prenom"),rs.getString("mail"),Crypte.decrypt(rs.getString("motPasse")),rs.getString("date"),rs.getString("profil"));
+				retour=new RedacteurDTO(rs.getInt("id"),rs.getString("nom"),rs.getString("prenom"),rs.getString("mail"),rs.getString("motPasse"),rs.getString("date"),rs.getString("profil"));
 
 
 		} catch (Exception ee) {
@@ -115,7 +115,7 @@ public  class RedacteurDAO {
 			//on execute la requete 
 			rs=ps.executeQuery();
 			if(rs.next())
-				retour=new RedacteurDTO(rs.getInt("id"),rs.getString("nom"),rs.getString("prenom"),rs.getString("mail"),Crypte.decrypt(rs.getString("motPasse")),rs.getString("date"),rs.getString("profil"));
+				retour=new RedacteurDTO(rs.getInt("id"),rs.getString("nom"),rs.getString("prenom"),rs.getString("mail"),rs.getString("motPasse"),rs.getString("date"),rs.getString("profil"));
 
 
 		} catch (Exception ee) {
@@ -219,5 +219,13 @@ public  class RedacteurDAO {
 		return retour;
 
 	}
+	
+	/*public static void main(String[] args){
+		
+		RedacteurDTO redacteur= new RedacteurDTO(0,"goyat","helene","g@h.fr","12345","12/12/12","redacteur");
+		System.out.println(RedacteurDAO.getInstance().ajouterRedacteur(redacteur));
+		
+		System.out.println(RedacteurDAO.getInstance().getRedacteur("nagalo@alexis.fr", "esigelec"));
+	}*/
 
 }

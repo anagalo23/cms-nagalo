@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ArticleDAO {
 	
-	private static String URL ="jdbc:mysql://localhost/mydb";
+	private static String URL ="jdbc:mysql://localhost/cms";
 	private static String USER ="root";
 	private static String PASS ="";
 	private static ArticleDAO singleton;

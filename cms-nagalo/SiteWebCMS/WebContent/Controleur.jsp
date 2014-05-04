@@ -14,7 +14,7 @@
 					.getRedacteur(login, password);
 			if (redacteur!=null) {
 				session.setAttribute("redacteur", redacteur);
-					pageSuivante = "TableauBord.jsp";
+				pageSuivante = "TableauBord.jsp";
 				} else {
 					pageSuivante = "Connexion.jsp";
 				}
@@ -62,12 +62,12 @@
 
 		//creer un article
 		else if ("CreerArticle".equals(action)) {
-			if (session.getAttribute("redacteur") != null) {
+			RedacteurDTO redact=(RedacteurDTO)session.getAttribute("redacteur");
+			if (redact!= null) {
 				String titre = request.getParameter("titre");
 				String contenu = request.getParameter("contenu");
-				int idRedacteur = (Integer) session.getAttribute("id");
 				ArticleDTO a = new ArticleDTO(0, titre, contenu,
-						"2014.2.12", idRedacteur);
+						"2014.2.12", redact.getId());
 				int ajout = ArticleDAO.getInstance().ajouterArticle(a);
 				if (ajout != 0) {
 
@@ -334,7 +334,7 @@
 					String mailM = request.getParameter("mailModif");
 					String passwordM = request
 							.getParameter("passwordModif");
-					String profil = request.getParameter("ModifProfil");
+					String profil = request.getParameter("addProfil");
 
 					RedacteurDTO redacteur = new RedacteurDTO(0, nomM,
 							prenomM, mailM, passwordM, "12/12/12",

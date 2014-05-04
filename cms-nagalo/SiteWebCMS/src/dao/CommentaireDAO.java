@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class CommentaireDAO {
 	
-	private static String URL ="jdbc:mysql://localhost/mydb";
+	private static String URL ="jdbc:mysql://localhost/cms";
 	private static String USER ="root";
 	private static String PASS ="";
 	private static CommentaireDAO singleton;
