@@ -97,9 +97,10 @@
 						<%
 							}
 								} else {
+						RedacteurDTO redacteur= RedacteurDAO.getInstance().unRedacteur(art.getIdRedacteur());
 						%>
-						<option value=<%=red.getId()%>><%=red.getNom().toUpperCase()%>
-							<%=red.getPrenom()%></option>
+						<option value=<%=redacteur.getId()%>><%=redacteur.getNom().toUpperCase()%>
+							<%=redacteur.getPrenom()%></option>
 						<%
 							}
 						%>
