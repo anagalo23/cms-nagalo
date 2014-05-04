@@ -1,59 +1,54 @@
 @CHARSET "ISO-8859-1";
-body{
-	background-color:SandyBrown;
+
+body {
+	background-color: Thistle;
 }
 
 menuAside {
 	float: left;
 	margin-right: 4%;
 	width: 15%;
+}
 
+#menuAside,#article {
+	display: inline-block;
+	margin-top: 2%;
 }
-#menuAside, #article{
-	display:inline-block;
-	margin-top:2%;
-	
-	
-}
-#retourAside{
+
+#retourAside {
 	margin-top: 1%;
-	height:13%;
-	background-color:White;
+	height: 13%;
+	background-color: White;
 }
 
 article {
 	margin-right: 1%;
 	width: 80%;
-	margin-top:2%;
+	margin-top: 2%;
 	float: right;
 	border: 1px solid OldLace;
 	padding: 1px 1px 1px 6px;
-	background-color:white;
-	
+	background-color: white;
 }
 
 a:link {
-	text-decoration:none;
-	color: Maroon;
+	color: blue;
 }
-
-
-
 
 h1 {
 	position: absolute;
-	top:0;
-	left:20%;
+	top: 0;
+	left: 20%;
 	text-align: Center;
 	font-family: Comic Sans MS;
 }
-h2{
+
+h2 {
 	text-align: Center;
 }
 
-
 li {
-	list-style-type:decimal;
+	list-style-type: decimal;
 	font-family: Comic Sans MS;
 	margin-left: 6%;
 	margin-bottom: 3%;
@@ -64,100 +59,99 @@ li {
 
 a:hover {
 	color: blue;
-	text-decoration:none;
 }
-#home{
+
+#home {
 	margin-left: 1%;
 }
 
 #p {
-	
 	padding: 10px 10px 10px 10px;
 	margin-left: 5%;
 	width: 90%;
 	background-color: white;
-
 }
 
-#maindiv{
-    margin:auto;
-    font-size: 20px;
-    font-family: Comic Sans MS;
-    margin: 0 10% 0 10%;
+#maindiv {
+	margin: auto;
+	font-size: 20px;
+	font-family: Comic Sans MS;
+	margin: 0 10% 0 10%;
 }
- 
-#divg{
+
+#divg {
 	height: 400px;
 	width: 45%;
-    float:left;
-    border: 1px solid black;
-    margin: 0 0 50px 0;
-    padding: 20px 0 0 20px;
+	float: left;
+	border: 1px solid black;
+	margin: 0 0 50px 0;
+	padding: 20px 0 0 20px;
 }
- 
-#divd{
+
+#divd {
 	height: 400px;
 	width: 45%;
 	float: right;
 	border: 1px solid black;
-	text-align:center;
+	text-align: center;
 	padding: 20px 0 0 0;
 }
-
 
 #div3 {
 	font-family: Comic Sans MS;
 	font-weight: bold;
 }
-#divPoste{
-	margin-top:20%;
-	margin-left:5%;
+
+#divPoste {
+	margin-top: 20%;
+	margin-left: 5%;
 }
-#supp{
-	background-color:Olive;
+
+#supp {
+	background-color: Olive;
 	text-align: center;
 }
 
-
 #logo {
-	position:abslute;
+	position: abslute;
 	top: 1%;
 	width: 10%;
 	height: 70px;
-} 
+}
 
 #saisi {
 	width: 94%;
 	height: 30px;
 }
 
-
-#textareaEdit{
+#textareaEdit {
 	margin-left: 3%;
 	width: 94%;
-	margin-top:3%;
-	height:400px;
-	background-color:white;
+	margin-top: 3%;
+	height: 400px;
+	background-color: white;
 }
 
 #Contenu_Visiteur {
 	background-color: CadetBlue;
 	padding: 1px 1px 1px 5px;
 	width: 80%
-}#menuTab{
-	background-color:Gainsboro;
-}
-#menuPr{
-	margin-top: 30%;
-	background-color:Gainsboro;
 }
 
-#indexArticle{
+#menuTab {
+	background-color: Gainsboro;
+}
+
+#menuPr {
+	margin-top: 30%;
+	background-color: Gainsboro;
+}
+
+#indexArticle {
 	background-color: Plum;
 	padding: 1px 1px 1px 5px;
 	width: 94%;
 }
-
 
 #commenter {
 	margin-left: 80%;
@@ -180,40 +174,60 @@ a:hover {
 }
 
 header {
-	margin-left:35%;
+	margin-left: 35%;
 }
-#articleHref{
+
+#articleHref {
 	font-size: 30px;
 	font-weight: bold;
-	text-decoration:underline;
+	text-decoration: underline;
 }
+
 #form {
 	border: 1px solid black;
-	width:40%;
-	margin-top:2%;
-	margin-left:30%;
+	width: 50%;
+	margin-top: 2%;
+	margin-left: 25%;
 	font-family: Comic Sans MS;
 	padding: 1px 1px 1px 3px;
 }
-#tdAr{
-	width:100%;
-}
-#recherch{
-	position:absolute;
-	top:3%;
-	right:15%;
+
+#tdAr {
+	width: 100%;
 }
 
-#admin{
-	position:absolute;
-	top:14%;
-	left:3%;
-	background-color:orange;
+#recherch {
+	position: absolute;
+	top: 3%;
+	right: 15%;
 }
-#formConnexion{
-	width:30%;
-	margin-top:5%;
-	margin-left:30%;
+
+#admin {
+	position: absolute;
+	top: 14%;
+	left: 3%;
+	background-color: orange;
+}
+
+#formConnexion {
+	width: 30%;
+	margin-top: 5%;
+	margin-left: 30%;
 	padding: 1px 1px 1px 3px;
-	background-color:white;
+	background-color: white;
 }
+#boutonModif,#boutonAdmin{
+	cursor: pointer; 
+	padding: 5px 20px; 
+	background-color: lightsteelblue; 
+	border: dotted 2px grey; 
+	border-radius: 5px;"
+}
+footer {
+	width:100%;
+	position: fixed;
+	bottom: 0;
+	background-color:Gray;
+	height: 4%; /*ici je mettrais plutôt un height en px*/
+}
+

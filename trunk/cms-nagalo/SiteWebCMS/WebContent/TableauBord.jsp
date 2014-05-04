@@ -32,7 +32,8 @@
 						<hr /></td>
 				</tr>
 				<tr>
-					<td><a href="Controleur.jsp?action=deconnecter"  onclick="return(confirm('Etes-vous sûr de vouloir vous déconnecter?'));">Déconnecter</a></td>
+					<td><a href="Controleur.jsp?action=deconnecter"
+						onclick="return(confirm('Etes-vous sûr de vouloir vous déconnecter?'));">Déconnecter</a></td>
 				</tr>
 			</table>
 		</aside>
@@ -44,12 +45,16 @@
 
 		<article>
 			<%
-				String nom = (String) session.getAttribute("nom");
+				
+				RedacteurDTO red = (RedacteurDTO) session.getAttribute("redacteur");
+				String nom= red.getNom();
+				String prenom=red.getPrenom();
+			
 			%>
 			<h2>
 				Bienvenue,
 				<%=nom.toUpperCase()%>
-				<%=session.getAttribute("prenom")%></h2>
+				<%=prenom%></h2>
 
 			<div id="maindiv">
 
@@ -62,7 +67,11 @@
 								les Articles</a></li>
 						<li><a href="Controleur.jsp?action=GererCommentaire">Gérer
 								les Commentaires</a></li>
+
+									
+					
 						<li><a href="Controleur.jsp?action=configuration">Configuration</a></li>
+					
 					</ul>
 				</fieldset>
 
@@ -79,7 +88,7 @@
 				%>
 
 				<fieldset id="divd">
-					<legend>Vous avez: </legend>
+					<legend> Vous avez: </legend>
 					<br /> <br />
 					<%=l.size()%>
 					articles <br />

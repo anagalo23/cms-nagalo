@@ -56,7 +56,8 @@
 				<hr /></td>
 		</tr>
 		<tr>
-			<td><a href="Controleur.jsp?action=deconnecter" onclick="return(confirm('Etes-vous sûr de vouloir vous déconnecter?'));">Déconnecter</a></td>
+			<td><a href="Controleur.jsp?action=deconnecter"
+				onclick="return(confirm('Etes-vous sûr de vouloir vous déconnecter?'));">Déconnecter</a></td>
 		</tr>
 
 	</table>
@@ -78,6 +79,8 @@
 		<%
 			List<RedacteurDTO> listRedact = (List<RedacteurDTO>) RedacteurDAO
 						.getInstance().getListRedacteur();
+				RedacteurDTO red = (RedacteurDTO) session
+						.getAttribute("redacteur");
 		%>
 
 		<table align="center" width=100% border=0>
@@ -85,11 +88,18 @@
 				<td align="center" colspan="2"><select width=35%
 					name="idRedacteurModif">
 						<%
-							for (RedacteurDTO rd : listRedact) {
+							if (red.getProfil().startsWith("a")) {
+									for (RedacteurDTO rd : listRedact) {
 						%>
 						<option value=<%=rd.getId()%>
 							<%if (rd.getId() == art.getIdRedacteur()) {%> SELECTED <%}%>><%=rd.getNom().toUpperCase()%>
 							<%=rd.getPrenom()%></option>
+						<%
+							}
+								} else {
+						%>
+						<option value=<%=red.getId()%>><%=red.getNom().toUpperCase()%>
+							<%=red.getPrenom()%></option>
 						<%
 							}
 						%>
@@ -97,15 +107,13 @@
 			</tr>
 			<tr>
 				<td align="center"><input type="reset" name="effacement"
-					value="effacer"
-					style="cursor: pointer; padding: 5px 20px; background-color: lightsteelblue; border: dotted 2px grey; border-radius: 5px;" /></td>
-				<td align="center"><input type="submit"
-					value="Enregistrer les modifications" onclick="return(confirm('Voulez-vous enregistrer les modifications?'));"
-					style="cursor: pointer; padding: 5px 20px; background-color: lightsteelblue; border: dotted 2px grey; border-radius: 5px;"></td>
+					id="boutonModif" value="effacer"></td>
+				<td align="center"><input id="boutonModif"type="submit" value="Enregistrer les modifications"
+					onclick="return(confirm('Voulez-vous enregistrer les modifications?'));"></td>
 			</tr>
 		</table>
 	</form>
-
+	<br/><br/><br/>
 	</article> <%
  	}
  %> </section>
