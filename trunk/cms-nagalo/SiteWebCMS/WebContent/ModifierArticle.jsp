@@ -6,7 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="Cms.css" />
 <link rel="icon" type="image/png" href="logo.PNG" />
-
+	
+<!-- 	fonction pour le chargement de l'editeur
+		l'utilisation de l'editeur NicEditor
+ -->
 <script type="text/javascript"
 	src="http://js.nicedit.com/nicEdit-latest.js"></script>
 <script type="text/javascript">
@@ -43,7 +46,7 @@
 	</aside> <aside id="menuAside">
 	<table id="menuTab">
 		<tr>
-			<td><a href="Controleur.jsp?action=Affichage_article">Tous
+			<td><a href="Controleur.jsp?action=Affichage_article"   target="_blank">Tous
 					les articles</a>
 				<hr /></td>
 		</tr>
@@ -65,7 +68,7 @@
 		if (art != null) {
 	%> </aside> <article>
 	<h2>Modifier un article</h2>
-	<form method="get" action="Controleur.jsp">
+	<form method="post" action="Controleur.jsp">
 		<input type="hidden" name="action" value="modifArticle"> <input
 			type="hidden" name="idmodif" value=<%=art.getId()%>> <input
 			id="saisi" type="search" name="titreModif"

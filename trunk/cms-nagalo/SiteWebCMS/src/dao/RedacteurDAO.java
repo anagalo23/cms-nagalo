@@ -145,7 +145,7 @@ public  class RedacteurDAO {
 			rs=ps.executeQuery();
 			//on parcourt les lignes du resultat
 			while(rs.next())
-				retour.add(new RedacteurDTO(rs.getInt("id"),rs.getString("nom"),rs.getString("prenom"),rs.getString("mail"),Crypte.decrypt(rs.getString("motPasse")),rs.getString("date"),rs.getString("profil")));
+				retour.add(new RedacteurDTO(rs.getInt("id"),rs.getString("nom"),rs.getString("prenom"),rs.getString("mail"),rs.getString("motPasse"),rs.getString("date"),rs.getString("profil")));
 
 		} catch (Exception ee) {
 			ee.printStackTrace();

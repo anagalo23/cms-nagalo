@@ -35,6 +35,8 @@ public class ArticleDAO {
 		return singleton;
 	}
 	
+	
+	// ajout d'un article a la base de données
 	public int ajouterArticle(ArticleDTO a)
 	{
 		Connection con=null;
@@ -64,6 +66,7 @@ public class ArticleDAO {
 
 	}
 	
+	//recuperation d'un article par son id
 	public ArticleDTO getUnArticle(int id)
 	{
 		Connection con=null;
@@ -95,6 +98,7 @@ public class ArticleDAO {
 
 	}
 	
+	//recherche d'un article par le titre
 	public ArticleDTO rechercheArticle(String titre)
 	{
 		Connection con=null;
@@ -126,7 +130,7 @@ public class ArticleDAO {
 
 	}
 	
-
+// recuperation de la liste des articles pa redacteur
 	public List<ArticleDTO> CompteArticle(int idRedacteur)
 	{
 		
@@ -157,7 +161,7 @@ public class ArticleDAO {
 	
 	}
 	
-	
+	// recuperation de la liste totale des articles
 	public List<ArticleDTO> getListeArticle()
 	{
 		
@@ -189,6 +193,7 @@ public class ArticleDAO {
 	}
 	
 
+	//modification d'un article
 	public int updateArticle(ArticleDTO a, int id)
 	{
 		Connection con=null;
@@ -219,6 +224,7 @@ public class ArticleDAO {
 
 	}
 	
+	//suppression d'un article
 	public int deleteArticle(int id)
 	{
 		Connection con=null;
