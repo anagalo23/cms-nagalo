@@ -12,6 +12,7 @@
 
 </head>
 <body>
+
 	<section>
 		<a href="Controleur.jsp?action=home"><img id="logo" height="10%"
 			width="140px" src="logo.PNG"></a>
@@ -26,7 +27,7 @@
 		<aside id="menuAside">
 			<table id="menuTab">
 				<tr>
-					<td><a href="Controleur.jsp?action=Affichage_article">Tous
+					<td><a href="Controleur.jsp?action=Affichage_article"  target="_blank">Tous
 							les article</a>
 						<hr /></td>
 				</tr>
@@ -39,12 +40,17 @@
 						<hr /></td>
 				</tr>
 				<tr>
-					<td><a href="Controleur.jsp?action=deconnecter" onclick="return(confirm('Etes-vous sûr de vouloir vous déconnecter?'));">Déconnecter</a></td>
+					<td><a href="Controleur.jsp?action=deconnecter"
+						onclick="return(confirm('Etes-vous sûr de vouloir vous déconnecter?'));">Déconnecter</a></td>
 				</tr>
 			</table>
 		</aside>
 
 		<article id="Contenu_Visiteur">
+			<%
+		RedacteurDTO red = (RedacteurDTO) session.getAttribute("redacteur");
+		if (red.getProfil().startsWith("a")) {
+	%>
 
 			<%
 				List<ArticleDTO> liste = (List<ArticleDTO>) request
@@ -73,32 +79,78 @@
 			<table align=center width=30%>
 				<tr>
 					<td align=left><div id="supp">
-							<a href="Controleur.jsp?action=modifier&idm=<%=a.getId()%>"  onclick="return(confirm('Etes-vous sûr de vouloir modifier cet article?'));">
+							<a href="Controleur.jsp?action=modifier&idm=<%=a.getId()%>"
+								onclick="return(confirm('Etes-vous sûr de vouloir modifier cet article?'));">
 								modifier l'article</a>
 						</div></td>
 					<td align=right>
 						<div id="supp">
-							<a href="Controleur.jsp?action=supprimer&idc=<%=a.getId()%>" onclick="return(confirm('Etes-vous sûr de vouloir supprimer cet article?'));">
+							<a href="Controleur.jsp?action=supprimer&idc=<%=a.getId()%>"
+								onclick="return(confirm('Etes-vous sûr de vouloir supprimer cet article?'));">
 								Supprimer l'article</a>
 						</div>
 					</td>
 				</tr>
 			</table>
 			<hr />
-			<br />
-
-			<%
-				}
-			%>
+			<%	} %>
 
 
 			</p>
 			<%
-				} else{
+				} else {
 			%>
-			page non trouvée <%} %>
+			page non trouvée
+			<%
+				}
+				
+		}else if(red.getProfil().startsWith("r")){
+					List<ArticleDTO> lis =ArticleDAO.getInstance().CompteArticle(red.getId());
+					if (lis!= null) {
+						for (ArticleDTO a : lis) {
+				%>
+			<p id="pa">
+			<h3 align="center"><%=a.getTitre()%></h3>
+			<br />
+			<%=a.getDate()%><br />
+			<div id="p"><%=StringEscapeUtils.escapeHtml(a.getContenu_art())%></div>
+			<br />
 
-			<br/><br/>
+			<%
+					int reaction = CommentaireDAO.getInstance()
+									.getListeCommentaire(a.getId()).size();
+							if (reaction <= 1) {
+				%><u><%=reaction%> réaction</u>
+			<%
+					} else {
+				%><u><%=reaction%> réactions</u>
+			<%
+					}
+				%><br />
+			<table align=center width=30%>
+				<tr>
+					<td align=left><div id="supp">
+							<a href="Controleur.jsp?action=modifier&idm=<%=a.getId()%>"
+								onclick="return(confirm('Etes-vous sûr de vouloir modifier cet article?'));">
+								modifier l'article</a>
+						</div></td>
+					<td align=right>
+						<div id="supp">
+							<a href="Controleur.jsp?action=supprimer&idc=<%=a.getId()%>"
+								onclick="return(confirm('Etes-vous sûr de vouloir supprimer cet article?'));">
+								Supprimer l'article</a>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<hr />
+			<%	} } else {%>Article non trouvé
+			</p>
+
+			<%}}%>
+
+			<br /> <br />
+
 		</article>
 	</section>
 

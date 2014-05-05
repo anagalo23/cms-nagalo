@@ -14,7 +14,7 @@
 		href="Controleur.jsp?action=accueil"><img src="logo.PNG"></a> </header>
 
 
-	<form id="formConnexion"  method="get" action="Controleur.jsp">
+	<form id="formConnexion"  method="post" action="Controleur.jsp">
 		<input type="hidden" name="action" value="connect">
 		<table id="tabConnect" align=center cellpadding="5%" border="0">
 

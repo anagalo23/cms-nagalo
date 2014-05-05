@@ -19,7 +19,7 @@
 		<aside id="menuAside">
 			<table id="menuPr">
 				<tr>
-					<td><a href="Controleur.jsp?action=Affichage_article">Tous
+					<td><a href="Controleur.jsp?action=Affichage_article"  target="_blank">Tous
 							les articles</a>
 						<hr /></td>
 				</tr>

@@ -22,7 +22,7 @@
 		<aside id="menuAside">
 			<table id="menuTab">
 				<tr>
-					<td><a href="Controleur.jsp?action=Affichage_article">Tous
+					<td><a href="Controleur.jsp?action=Affichage_article"  target="_blank">Tous
 							les articles</a>
 						<hr /></td>
 				</tr>
@@ -44,6 +44,9 @@
 
 		<article id="Contenu_Visiteur">
 			<%
+			RedacteurDTO red = (RedacteurDTO) session.getAttribute("redacteur");
+			
+			if (red.getProfil().startsWith("a")) {
 				List<ArticleDTO> list = (List<ArticleDTO>) request
 						.getAttribute("list");
 				if (list != null) {
@@ -100,6 +103,8 @@
 				}
 			%>
 			<br /> <br /><br/>
+			<%}else{%> Vous n'avez pas le droit d'accès a cette page<%}
+			%>
 
 		</article>
 	</section>

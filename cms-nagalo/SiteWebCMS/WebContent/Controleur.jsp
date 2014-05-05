@@ -305,7 +305,7 @@
 				pageSuivante = "Connexion.jsp";
 			}
 		}
-
+		//modification d'un redacteur
 		else if ("modifierRedacteur".equals(action)) {
 			if (session.getAttribute("redacteur") != null) {
 				int idred = Integer.parseInt(request

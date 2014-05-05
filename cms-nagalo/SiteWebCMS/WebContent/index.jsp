@@ -18,7 +18,10 @@
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
 
 <script>
-	$(function(){
+
+/// la fonction permettant de faire la recherche autocomplete
+ 
+ $(function(){
 		  $( "#autocomplete" ).autocomplete({
 		        source: "autocomplete",
 		        minLength: 1
@@ -28,7 +31,6 @@
 
 </head>
 <body>
-
 	<section>
 		<div id="div2">
 			<a href="Controleur.jsp?action=accueil"><img id="logo" src="logo.PNG"></a>GONA
@@ -51,7 +53,7 @@
 			<h1>Les articles</h1>
 
 
-			<%List<ArticleDTO> liste = ArticleDAO.getInstance().getListeArticle();
+			<%List<ArticleDTO> liste = ArticleDAO.getInstance().getListeArticle(); //recuperation de la liste des articles
 		
 			int indice=1;
 			if(liste!=null){ 
