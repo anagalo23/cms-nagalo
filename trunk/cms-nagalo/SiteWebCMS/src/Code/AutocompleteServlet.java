@@ -76,6 +76,7 @@ public class AutocompleteServlet extends HttpServlet {
         String title,contenu;
         query = query.toLowerCase();
         List<String> matched = new ArrayList<>();
+        
         for(int i=0; i<data.size(); i++) {
         	
             title = data.get(i).getTitre().toLowerCase();

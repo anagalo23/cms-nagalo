@@ -26,7 +26,7 @@
 		        source: "autocomplete",
 		        minLength: 1
 		    });
-	})
+	});
 </script>
 
 </head>

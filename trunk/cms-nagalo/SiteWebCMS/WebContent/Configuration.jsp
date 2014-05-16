@@ -24,6 +24,8 @@
 		</aside>
 		<%
 			RedacteurDTO redDTO = (RedacteurDTO) request.getAttribute("redDTO");
+			RedacteurDTO red = (RedacteurDTO) session.getAttribute("redacteur");
+			if (red.getProfil().startsWith("a")) { // verifier que l'option commence par 'a' c est a dire qu'il s'agit d'un administrateur
 			if (redDTO != null) {
 		%>
 
@@ -207,6 +209,7 @@
 			</table>
 
 		</form>
+		<%}else{ %> vous n'avez pas le droit d'accès à cette page<%}%> <!-- pour les redacteur simple -->
 
 	</section>
 </body>

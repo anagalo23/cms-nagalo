@@ -50,12 +50,9 @@
 			<%
 		RedacteurDTO red = (RedacteurDTO) session.getAttribute("redacteur");
 		if (red.getProfil().startsWith("a")) {
-	%>
-
-			<%
-				List<ArticleDTO> liste = (List<ArticleDTO>) request
-						.getAttribute("list");
-				if (liste != null) {
+				List<ArticleDTO> liste = (List<ArticleDTO>)request.getAttribute("list");
+				if (liste.size()==0) {%><p>Vous n'avez pas encore publié d'articles. <a href="Controleur.jsp?action=AjoutArticle">Publier ici </a></p><%}
+				else{
 					for (ArticleDTO a : liste) {
 			%>
 			<p id="pa">
@@ -98,17 +95,13 @@
 
 			</p>
 			<%
-				} else {
-			%>
-			page non trouvée
-			<%
-				}
+				}	
 				
 		}else if(red.getProfil().startsWith("r")){
 					List<ArticleDTO> lis =ArticleDAO.getInstance().CompteArticle(red.getId());
-					if (lis!= null) {
-						for (ArticleDTO a : lis) {
-				%>
+					if (lis.size()==0) {%><p>Vous n'avez pas encore publié d'articles. <a href ="Controleur.jsp?action=AjoutArticle">Publier ici </a></p>
+					 <%}else{
+						for (ArticleDTO a : lis){%>
 			<p id="pa">
 			<h3 align="center"><%=a.getTitre()%></h3>
 			<br />
@@ -144,10 +137,10 @@
 				</tr>
 			</table>
 			<hr />
-			<%	} } else {%>Article non trouvé
+			<%	} }%>
 			</p>
 
-			<%}}%>
+			<%}%>
 
 			<br /> <br />
 

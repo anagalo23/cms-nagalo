@@ -32,6 +32,8 @@
 <body>
 	<%
 		ArticleDTO art = (ArticleDTO) request.getAttribute("modifArti");
+	RedacteurDTO red = (RedacteurDTO) session
+			.getAttribute("redacteur");
 	%>
 
 
@@ -82,8 +84,7 @@
 		<%
 			List<RedacteurDTO> listRedact = (List<RedacteurDTO>) RedacteurDAO
 						.getInstance().getListRedacteur();
-				RedacteurDTO red = (RedacteurDTO) session
-						.getAttribute("redacteur");
+				
 		%>
 
 		<table align="center" width=100% border=0>
@@ -91,8 +92,8 @@
 				<td align="center" colspan="2"><select width=35%
 					name="idRedacteurModif">
 						<%
-							if (red.getProfil().startsWith("a")) {
-									for (RedacteurDTO rd : listRedact) {
+							if (red.getProfil().startsWith("a")) { // verifier que l'option commence par 'a' c est a dire qu'il 
+									for (RedacteurDTO rd : listRedact) { // s'agit d un administrateur
 						%>
 						<option value=<%=rd.getId()%>
 							<%if (rd.getId() == art.getIdRedacteur()) {%> SELECTED <%}%>><%=rd.getNom().toUpperCase()%>
@@ -101,6 +102,7 @@
 							}
 								} else {
 						RedacteurDTO redacteur= RedacteurDAO.getInstance().unRedacteur(art.getIdRedacteur());
+						
 						%>
 						<option value=<%=redacteur.getId()%>><%=redacteur.getNom().toUpperCase()%>
 							<%=redacteur.getPrenom()%></option>
@@ -118,9 +120,10 @@
 		</table>
 	</form>
 	<br/><br/><br/>
-	</article> <%
- 	}
- %> </section>
+	</article> <%}%>
+	 </section>
+	 
+	 
 	<footer> </footer>
 </body>
 </html>

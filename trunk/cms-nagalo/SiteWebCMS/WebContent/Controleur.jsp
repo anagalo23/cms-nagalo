@@ -223,7 +223,7 @@
 			if (red != null) {
 				if (red.getProfil().startsWith("a")) {
 					pageSuivante = "Configuration.jsp";
-				} else {pageSuivante="TableauBord.jsp";}
+				} else {pageSuivante="Configuration.jsp";}
 
 			} else
 				pageSuivante = "Connexion.jsp";
