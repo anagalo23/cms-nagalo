@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import dto.*;
-import Code.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -177,7 +176,7 @@ public  class RedacteurDAO {
 			ps.setString(1,r.getNom());
 			ps.setString(2,r.getPrenom());
 			ps.setString(3, r.getMail());
-			ps.setString(4, Crypte.encrypt(r.getMotPasse()));
+			ps.setString(4, r.getMotPasse());
 			ps.setString(5, r.getProfil());
 			ps.setInt(6,id);
 			retour=ps.executeUpdate();

@@ -103,7 +103,7 @@
 				}
 			%>
 			<br /> <br /><br/>
-			<%}else{%> Vous n'avez pas le droit d'accès a cette page<%}
+			<%}else{%> Vous n'avez pas le droit d'accès à cette page<%}
 			%>
 
 		</article>
